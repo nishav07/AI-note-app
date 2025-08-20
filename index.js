@@ -16,7 +16,6 @@ app.set("views",path.join(__dirname,"views"));
 app.set("view engine","ejs");
 
 const port = 6969;
-
 const middlewares = require("./middleware/middleware");
 app.use(middlewares.hello)
 
@@ -33,3 +32,6 @@ app.get("/",(req,res) => {
 app.get("/noob",middlewares.noob,(req,res) => {
     res.send("hello noobdo");
 })
+
+const postRoute = require("./routes/auth");
+app.use("/post",postRoute)

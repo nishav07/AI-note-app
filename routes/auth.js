@@ -7,7 +7,7 @@ const micro = require("../controllers/controller")
 router.get("/" ,micro.send)
 router.get("/home",micro.home)
 router.get("/new",micro.newNotes)
-// router.post("/new",)
+router.post("/new",micro.postNotes)
 module.exports = router;
 
 

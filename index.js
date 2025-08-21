@@ -16,7 +16,7 @@ app.set("views",path.join(__dirname,"views"));
 app.set("view engine","ejs");
 
 const port = 6969;
-const {connection} = require("./config/db")
+const {pool} = require("./config/db")
 const { test } = require("./config/db")
 const middlewares = require("./middleware/middleware");
 app.use(middlewares.hello)
@@ -24,7 +24,8 @@ app.use(middlewares.hello)
 
 
 const postRoute = require("./routes/auth");
-app.use("/",postRoute)
+app.use("/",postRoute);
+app.use("/",postRoute);
 app.use("/",postRoute);
 app.use("/",postRoute);
 

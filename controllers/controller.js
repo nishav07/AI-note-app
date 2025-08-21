@@ -1,3 +1,7 @@
+const {pool} = require("../config/db");
+
+
+
 function send(req,res){
     res.send("aree bhai hello world")
 }
@@ -7,10 +11,16 @@ function home(req,res){
 }
 
 
-function notesData(req,res){
+async function notesData(req,res){
     const {title,content} = req.body;
-    console.log(req.body)
-    res.render("")
+    console.log(req.body);
+    try {
+        await pool.query("INSERT INTO notes (title,content) VALUES(?,?)",[title,content])
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Database error");  
+    }
+    res.render("home.ejs")
 }
 
 function newNotes(req,res){
@@ -29,5 +39,6 @@ module.exports = {
     send,
     notesData,
     home,
-    newNotes
+    newNotes,
+    postNotes
 }

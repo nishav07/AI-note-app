@@ -1,7 +1,7 @@
 const sql = require("mysql2/promise");
 
 
-const connection = sql.createPool({
+const pool = sql.createPool({
     host:process.env.HOST,
     port:process.env.PORT,
     user:process.env.USER,
@@ -11,11 +11,11 @@ const connection = sql.createPool({
 
 
 async function test() {
-    const [rows] = await connection.query("SELECT 2+2 AS result");
+    const [rows] = await pool.query("SELECT 2+2 AS result");
     console.log(rows);
 }
 
 module.exports = {
-    connection,
+    pool,
     test,
 };

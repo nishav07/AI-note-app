@@ -26,10 +26,12 @@ app.use(middlewares.hello)
 const postRoute = require("./routes/auth");
 app.use("/",postRoute)
 app.use("/",postRoute);
+app.use("/",postRoute);
 
 app.listen(port,() => {
-    console.log(`server running on http//localhost:${port}`)
+    console.log(`server running on http://localhost:${port}/`)
 })
+
 
 test();
 

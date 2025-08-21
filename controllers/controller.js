@@ -13,8 +13,21 @@ function notesData(req,res){
     res.render("")
 }
 
+function newNotes(req,res){
+    res.render("newNotes.ejs");
+}
+
+function postNotes(req,res){
+    const {title,content} = req.body;
+    console.log({
+        title,
+        content
+    })
+    res.redirect("/")
+}
 module.exports = {
     send,
     notesData,
-    home
+    home,
+    newNotes
 }

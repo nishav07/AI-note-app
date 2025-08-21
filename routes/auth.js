@@ -1,11 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const { send } = require("../controllers/controller")
-const { home } = require("../controllers/controller")
+const micro = require("../controllers/controller")
+// const { send } = require("../controllers/controller")
+// const { home } = require("../controllers/controller")
 
-router.get("/" ,send)
-router.get("/home",home)
-// router.post("/", home)
+router.get("/" ,micro.send)
+router.get("/home",micro.home)
+router.get("/new",micro.newNotes)
+// router.post("/new",)
 module.exports = router;
 
 

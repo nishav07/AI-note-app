@@ -4,8 +4,8 @@ const { send } = require("../controllers/controller")
 const { home } = require("../controllers/controller")
 
 router.get("/" ,send)
-router.get("/",)
-router.post("/",)
+router.get("/home",home)
+// router.post("/", home)
 module.exports = router;
 
 

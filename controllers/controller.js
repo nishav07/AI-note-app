@@ -6,6 +6,7 @@ function home(req,res){
     res.render("home.ejs");
 }
 
+
 function notesData(req,res){
     const {title,content} = req.body;
     console.log(req.body)
@@ -14,5 +15,6 @@ function notesData(req,res){
 
 module.exports = {
     send,
-    notesData
+    notesData,
+    home
 }

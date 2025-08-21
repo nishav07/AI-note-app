@@ -37,5 +37,5 @@ app.listen(port,() => {
 test();
 
 app.get("/",(req,res) => {
-    res.send("hello world");
+    res.render("why tf you reqesting at index");
 })

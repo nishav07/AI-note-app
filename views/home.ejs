@@ -8,7 +8,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <h2 class="text-lg m-8">Notes App</h2>
-    <a href="http://localhost:6969/new"><button class="h-12 w-20 bg-black text-white font-mono rounded-lg m-8"><i class="fa-solid fa-note-sticky"></i></button></a>
+    <main class="h-screen w-full bg-black flex flex-col justify-center items-center gap-4">
+
+        <div class="h-auto w-3/4 border-4 border-indigo-600 p-8">
+            <% for (let d of data) { %>
+            <div class="h-auto w-3/4 border-2 border-indigo-600 p-4">
+                <p class="text-xl text-white font-mono"><%= d.title %></p>
+                <p class="text-s text-white font-mono mt-2"><%= d.content %></p>
+            </div>
+        <% } %>
+        </div>
+
+        <a href="http://localhost:6969/new"><button class="h-12 w-20 bg-black text-white border-b-2 border-indigo-600  rounded-lg m-8"><i class="fa-solid fa-note-sticky"></i></button></a>
+    </main>
+
+
+    
 </body>
 </html>

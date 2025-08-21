@@ -14,4 +14,8 @@ async function test() {
     const [rows] = await connection.query("SELECT 2+2 AS result");
     console.log(rows);
 }
-test();
+
+module.exports = {
+    connection,
+    test,
+};

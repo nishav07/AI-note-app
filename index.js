@@ -16,22 +16,22 @@ app.set("views",path.join(__dirname,"views"));
 app.set("view engine","ejs");
 
 const port = 6969;
+const {connection} = require("./config/db")
+const { test } = require("./config/db")
 const middlewares = require("./middleware/middleware");
 app.use(middlewares.hello)
 
+
+
+const postRoute = require("./routes/auth");
+app.use("/post",postRoute)
 
 app.listen(port,() => {
     console.log(`server running on http//localhost:${port}`)
 })
 
+test();
 
 app.get("/",(req,res) => {
     res.send("hello world");
 })
-
-app.get("/noob",middlewares.noob,(req,res) => {
-    res.send("hello noobdo");
-})
-
-const postRoute = require("./routes/auth");
-app.use("/post",postRoute)

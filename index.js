@@ -10,6 +10,8 @@ const ejs = require("ejs");
 
 
 
+
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname,"public")));
 app.use(express.urlencoded({ extended: true }));
@@ -22,6 +24,8 @@ const {pool} = require("./config/db")
 const { test } = require("./config/db")
 const middlewares = require("./middleware/middleware");
 app.use(middlewares.hello)
+
+
 
 
 

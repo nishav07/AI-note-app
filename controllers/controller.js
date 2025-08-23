@@ -33,11 +33,15 @@ function newNotes(req,res){
     res.render("newNotes.ejs");
 }
 
+function login (req,res){
+    res.render("login.ejs")
+}
 
 module.exports = {
     send,
     notesData,
     home,
     newNotes,
-    notesData
+    notesData,
+    login,
 }

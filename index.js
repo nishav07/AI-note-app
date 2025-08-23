@@ -30,6 +30,7 @@ app.use("/",postRoute);
 app.use("/",postRoute);
 app.use("/",postRoute);
 app.use("/",postRoute);
+app.use("/",postRoute);
 
 app.listen(port,() => {
     console.log(`server running on http://localhost:${port}/`)

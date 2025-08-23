@@ -2,7 +2,7 @@ const {pool} = require("../config/db");
 
 
 function send(req,res){
-    res.send("aree bhai hello world")
+    res.send("why tf you requesting at index")
 }
 
 
@@ -37,6 +37,30 @@ function login (req,res){
     res.render("login.ejs")
 }
 
+function signup (req,res){
+    res.render("signup.ejs")
+}
+
+function post_signup (req,res){
+    const {username,email,password} = req.body;
+
+    console.log({
+        username,
+        email,
+        password
+    })
+    res.redirect("/")
+}
+
+function post_login (req,res){
+    const {username,password} = req.body;
+
+    console.log({
+        username,
+        password
+    })
+    res.redirect("/")
+}
 module.exports = {
     send,
     notesData,
@@ -44,4 +68,7 @@ module.exports = {
     newNotes,
     notesData,
     login,
+    post_login,
+    signup,
+    post_signup
 }

@@ -25,12 +25,11 @@ app.use(middlewares.hello)
 
 
 
-const postRoute = require("./routes/auth");
+const postRoute = require("./routes/routers");
 app.use("/",postRoute);
-app.use("/",postRoute);
-app.use("/",postRoute);
-app.use("/",postRoute);
-app.use("/",postRoute);
+
+
+
 
 app.listen(port,() => {
     console.log(`server running on http://localhost:${port}/`)
@@ -39,6 +38,3 @@ app.listen(port,() => {
 
 test();
 
-app.get("/",(req,res) => {
-    res.render("why tf you reqesting at index");
-})

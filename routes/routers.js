@@ -9,6 +9,9 @@ router.get("/home",micro.home);
 router.get("/new",micro.newNotes);
 router.post("/new",micro.notesData);
 router.get("/login",micro.login);
+router.post("/login",micro.post_login);
+router.get("/signup",micro.signup);
+router.post("/signup",micro.post_signup);
 module.exports = router;
 
 

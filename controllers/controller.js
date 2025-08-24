@@ -41,7 +41,7 @@ function signup (req,res){
     res.render("signup.ejs")
 }
 
-function post_signup (req,res){
+async function post_signup (req,res){
     const {username,email,password} = req.body;
 
     console.log({
@@ -49,6 +49,12 @@ function post_signup (req,res){
         email,
         password
     })
+
+    try{
+        await pool.query("INSERT INTO users (username,email,password) VALUES (?,?,?)"[username,email,password]);
+    } catch(err){
+        res.status(500).send("database error")
+    }
     res.redirect("/")
 }
 

@@ -67,11 +67,16 @@ async function post_login (req,res){
     try {
         const [rows] = await pool.query("SELECT username,password FROM users WHERE username = ? AND password = ?",[username,password]);
         console.log(rows);
-        res.redirect("/home");
+     if(rows.length > 0){
+        res.redirect("/home")
+     } else {
+        res.redirect("/");
+     }
     } catch (error) {
         console.log(error)
         res.status(500).send("invalid details");
     }
+
 }
 
 module.exports = {

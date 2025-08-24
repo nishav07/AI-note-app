@@ -47,23 +47,31 @@ async function post_signup (req,res){
     console.log([username,email,password]);
 
     try{
-        await pool.query("INSERT INTO users (username,email,password) VALUES(?,?,?)",[username,email,password])
-        console.log("hello form signup db")
+        await pool.query("INSERT INTO users (username,email,password) VALUES(?,?,?)",[username,email,password]);
+        console.log("hello form signup db");
         res.redirect("/")
     } catch(err){
         console.log(err);
-        res.status(500).send("database error")
+        res.status(500).send("database error");
     }
 }
 
-function post_login (req,res){
+async function post_login (req,res){
     const {username,password} = req.body;
 
     console.log({
         username,
         password
     })
-    res.redirect("/")
+
+    try {
+        const [rows] = await pool.query("SELECT username,password FROM users WHERE username = ? AND password = ?",[username,password]);
+        console.log(rows);
+        res.redirect("/home");
+    } catch (error) {
+        console.log(error)
+        res.status(500).send("invalid details");
+    }
 }
 
 module.exports = {

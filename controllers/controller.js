@@ -44,18 +44,16 @@ function signup (req,res){
 async function post_signup (req,res){
     const {username,email,password} = req.body;
 
-    console.log({
-        username,
-        email,
-        password
-    })
+    console.log([username,email,password]);
 
     try{
-        await pool.query("INSERT INTO users (username,email,password) VALUES (?,?,?)"[username,email,password]);
+        await pool.query("INSERT INTO users (username,email,password) VALUES(?,?,?)",[username,email,password])
+        console.log("hello form signup db")
+        res.redirect("/")
     } catch(err){
+        console.log(err);
         res.status(500).send("database error")
     }
-    res.redirect("/")
 }
 
 function post_login (req,res){
@@ -67,6 +65,7 @@ function post_login (req,res){
     })
     res.redirect("/")
 }
+
 module.exports = {
     send,
     notesData,

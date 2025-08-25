@@ -9,7 +9,6 @@ const flash = require("connect-flash");
 const ejs = require("ejs");
 
 
-
 app.use(express.json());
 app.use(express.static(path.join(__dirname,"public")));
 app.use(express.urlencoded({ extended: true }));
@@ -23,11 +22,8 @@ const { test } = require("./config/db")
 const middlewares = require("./middleware/middleware");
 app.use(middlewares.hello)
 
-
-
 const postRoute = require("./routes/routers");
 app.use("/",postRoute);
-
 
 
 

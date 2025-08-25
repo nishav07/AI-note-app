@@ -12,6 +12,7 @@ router.get("/login",micro.login);
 router.post("/login",micro.post_login);
 router.get("/signup",micro.signup);
 router.post("/signup",micro.post_signup);
+router.get("/profile",micro.profile);
 module.exports = router;
 
 

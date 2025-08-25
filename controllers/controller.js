@@ -79,6 +79,9 @@ async function post_login (req,res){
 
 }
 
+function profile(req,res){
+    res.render("profile.ejs")
+}
 module.exports = {
     send,
     notesData,
@@ -88,5 +91,6 @@ module.exports = {
     login,
     post_login,
     signup,
-    post_signup
+    post_signup,
+    profile
 }

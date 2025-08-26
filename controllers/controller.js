@@ -2,7 +2,7 @@ const {pool} = require("../config/db");
 
 
 function send(req,res){
-    res.send("why tf you requesting at index")
+    res.render("index.ejs")
 }
 
 

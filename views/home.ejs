@@ -7,8 +7,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body>
-    <nav class="h-28 m-8 w-[calc(100%-4rem)] border-2 border-gray-100 pl-8 pr-8 flex justify-between items-center gap-8 rounded-t-lg shadow-xl">
+<body class="p-8 h-screen">
+    <nav class="h-28 w-full border-2 border-gray-100 pl-8 pr-8 flex justify-between items-center gap-8 rounded-t-lg shadow-xl">
         <h2 class="font-mono">logo</h2>
 
         <div class="h-12 w-120 bg-gray-100 flex justify-center items-center p-2 rounded-lg">
@@ -17,10 +17,20 @@
         </div>
 
         <ul class="font-mono h-auto w-auto flex justify-center items-center gap-8">
-            <a class="font-black text-3xl" href="http://localhost:6969/login"><i class="fa-solid fa-heart"></i></a>
-            <a class="font-black text-3xl" href="http://localhost:6969/signup"><i class="fa-solid fa-circle-user"></i></a>
+            <a class="text-gray-600 text-2xl" href="http://localhost:6969/login"><i class="fa-solid fa-heart"></i></a>
+            <a class="text-gray-600 text-2xl" href="http://localhost:6969/signup"><i class="fa-solid fa-circle-user"></i></a>
         </ul>
     </nav>
 
+    <main class="h-[calc(100vh - 7rem)] w-full bg-gray-100 flex justify-center items-center">
+        <div id="sideNav" class="h-full w-100 bg-red-300 flex justify-center items-center">
+            <div id="list" class="h-100% w-1/5 bg-blue-100 p-4">
+            <a class="text-gray-600 text-2xl" href="#"><i class="fa-solid fa-heart"></i> Likes</a>
+            <a class="text-gray-600 text-2xl" href="#"><i class="fa-solid fa-circle-user"></i> Likes</a>
+            </div>
+        </div>
+        <div id="mainFeed"></div>
+        <div id="extraFeatures"></div>
+    </main>
 </body>
 </html>

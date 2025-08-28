@@ -36,5 +36,5 @@ test();
 
 
 app.use((req, res) => {
-  res.status(404).send(" 404 Page - Page Not Found");
+  res.status(404).render("404");
 });

@@ -1,5 +1,3 @@
-const { post } = require("../../routes/routers");
-
 const publishBtn = document.getElementById("publishbtn");
 const draftBtn = document.getElementById("draftbtn");
 const myform = document.getElementById("myForm");
@@ -13,11 +11,10 @@ publishBtn.addEventListener("click" ,async() => {
     }
     let form = new FormData(myform);
     console.log(Object.fromEntries(form.entries()));
-    const {title,file,story} = Object.fromEntries(form.entries());
+    const {title,story} = Object.fromEntries(form.entries());
     console.log("publish button clicked");
-
-    const res = await fetch("/chat",{
-        method: post,
+    const res = await fetch("/new",{
+        method:"POST",
         body:form,
     })
 })

@@ -15,16 +15,16 @@ async function home(req,res){
 
 
 async function notesData(req,res){
-    const {title,content} = req.body;
-    console.log(req.body);
-    try {
-        await pool.query("INSERT INTO notes (title,content) VALUES(?,?)",[title,content])
-        console.log("hello form controlller db")
-        res.redirect("/home")
-    } catch (err) {
-        console.error(err);
-        res.status(500).send("Database error");  
-    }
+    const form = req.body.form;
+    console.log(Object.fromEntries(form.entries()));
+    // try {
+    //     await pool.query("INSERT INTO notes (title,content) VALUES(?,?)",[title,content])
+    //     console.log("hello form controlller db")
+    //     res.redirect("/home")
+    // } catch (err) {
+    //     console.error(err);
+    //     res.status(500).send("Database error");  
+    // }
 }
 
 

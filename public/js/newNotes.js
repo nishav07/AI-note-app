@@ -1,8 +1,10 @@
+const { post } = require("../../routes/routers");
+
 const publishBtn = document.getElementById("publishbtn");
 const draftBtn = document.getElementById("draftbtn");
 const myform = document.getElementById("myForm");
 
-publishBtn.addEventListener("click" , () => {
+publishBtn.addEventListener("click" ,async() => {
     let validity = myform.checkValidity();
     console.log(validity);
     if(!validity){
@@ -11,7 +13,13 @@ publishBtn.addEventListener("click" , () => {
     }
     let form = new FormData(myform);
     console.log(Object.fromEntries(form.entries()));
+    const {title,file,story} = Object.fromEntries(form.entries());
     console.log("publish button clicked");
+
+    const res = await fetch("/chat",{
+        method: post,
+        body:form,
+    })
 })
 
 draftBtn.addEventListener("click" , () => {

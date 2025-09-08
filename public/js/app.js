@@ -1,1 +1,0 @@
-console.log("hello wrolddddddddddddddddddddd from public folder")

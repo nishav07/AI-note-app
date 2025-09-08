@@ -20,8 +20,8 @@
 
 
         <div class="font-mono h-auto w-auto flex justify-center items-center gap-6">
-            <button class=" text-center h-12 w-30 text-base font-mono font-normal border-none bg-gray-100 text-blue-400 rounded-lg"> Save draft</button>
-            <button class=" text-center h-12 w-30 text-base font-mono font-normal border-none bg-blue-400 text-white rounded-lg"> Publish</button>
+            <button id="draftbtn" class=" text-center h-12 w-30 text-base font-mono font-normal border-none bg-gray-100 text-blue-400 rounded-lg"> Save draft</button>
+            <button id="publishbtn" class=" text-center h-12 w-30 text-base font-mono font-normal border-none bg-blue-400 text-white rounded-lg"> Publish</button>
         </div>
     </nav>
 
@@ -31,11 +31,13 @@
 
        <main class="h-[calc(100vh - 7rem)] w-full flex justify-center items-center gap-6">
         <div id="sideNav" class="h-140 w-3/4 flex justify-center items-center shadow-2xl">
-            <div id="input" class="h-full w-full p-12 flex flex-col items-center gap-4 ">
-                <input class="h-1/6 w-5/6 border-gray-300 border-2 p-8 rounded-lg" type="text" placeholder="Enter a Title" required>
-                <input class="h-2/6 w-5/6 border-gray-300 border-2 p-8 rounded-lg" type="file" name="file">
-                 <textarea class="h-3/6 w-5/6 border-gray-300 border-2 p-4 rounded-lg resize-none" placeholder="Write your story..." required></textarea>
+           <form class="h-full w-full" action="">
+             <div id="input" class="h-full w-full p-12 flex flex-col items-center gap-4 ">
+                <input class="h-1/6 w-5/6 border-gray-300 border-2 p-8 rounded-lg outline-none" type="text" placeholder="Enter a Title" required>
+                <input class="h-2/6 w-5/6 border-gray-300 border-2 p-8 rounded-lg outline-none" type="file" name="file">
+                 <textarea class="h-3/6 w-5/6 border-gray-300 border-2 p-4 rounded-lg resize-none outline-none" placeholder="Write your story..." required></textarea>
             </div>
+           </form>
         </div>
 
            
@@ -47,5 +49,6 @@
          </div>
         </div>
     </main>
+        <script src="/js/newNotes.js"></script>
 </body>
 </html>

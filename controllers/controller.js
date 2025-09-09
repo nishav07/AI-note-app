@@ -1,3 +1,4 @@
+const { json } = require("express");
 const {pool} = require("../config/db");
 
 
@@ -25,6 +26,8 @@ async function notesData(req,res){
     //     console.error(err);
     //     res.status(500).send("Database error");  
     // }
+
+    res.send("data aaaaaaaa gyaaaaaaaaa")
 }
 
 

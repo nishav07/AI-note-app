@@ -9,13 +9,15 @@ publishBtn.addEventListener("click" ,async() => {
         myform.reportValidity();
         return
     }
+
+
     let form = new FormData(myform);
     console.log(Object.fromEntries(form.entries()));
     const {title,story} = Object.fromEntries(form.entries());
     console.log("publish button clicked");
     const res = await fetch("/new",{
         method:"POST",
-        body:form,
+        body:{ title,story },
     })
 })
 

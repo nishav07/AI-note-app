@@ -3,6 +3,7 @@ const router = express.Router();
 const micro = require("../controllers/controller")
 
 
+
 router.get("/" ,micro.send);
 router.get("/home",micro.home);
 router.get("/new",micro.newNotes);

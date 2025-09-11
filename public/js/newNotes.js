@@ -10,7 +10,6 @@ publishBtn.addEventListener("click" ,async() => {
         return
     }
 
-
     let form = new FormData(myform);
     console.log(Object.fromEntries(form.entries()));
     const {title,story} = Object.fromEntries(form.entries());
@@ -22,6 +21,8 @@ publishBtn.addEventListener("click" ,async() => {
         },
         body: JSON.stringify({ title,story })
     })
+
+    window.location.href = "/home"
 })
 
 draftBtn.addEventListener("click" , () => {

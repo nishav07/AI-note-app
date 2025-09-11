@@ -17,7 +17,7 @@ publishBtn.addEventListener("click" ,async() => {
     console.log("publish button clicked");
     const res = await fetch("/new",{
         method:"POST",
-        body:{ title,story },
+        body:form,
     })
 })
 

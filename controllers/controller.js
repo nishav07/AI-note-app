@@ -16,8 +16,8 @@ async function home(req,res){
 
 
 async function notesData(req,res){
-    const form = req.body.form;
-    console.log(Object.fromEntries(form.entries()));
+    const forms = req.body.form;
+    console.log(Object.fromEntries(forms.entries()));
     // try {
     //     await pool.query("INSERT INTO notes (title,content) VALUES(?,?)",[title,content])
     //     console.log("hello form controlller db")

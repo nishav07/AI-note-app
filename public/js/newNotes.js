@@ -2,6 +2,8 @@ const publishBtn = document.getElementById("publishbtn");
 const draftBtn = document.getElementById("draftbtn");
 const myform = document.getElementById("myForm");
 
+
+
 publishBtn.addEventListener("click" ,async() => {
     let validity = myform.checkValidity();
     console.log(validity);
@@ -21,6 +23,8 @@ publishBtn.addEventListener("click" ,async() => {
         },
         body: JSON.stringify({ title,story })
     })
+
+
 
     window.location.href = "/home"
 })

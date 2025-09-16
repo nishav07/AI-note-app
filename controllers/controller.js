@@ -85,6 +85,10 @@ async function post_login (req,res){
 function profile(req,res){
     res.render("profile.ejs")
 }
+
+function explore(req,res){
+    res.render("explore.ejs")
+}
 module.exports = {
     send,
     notesData,

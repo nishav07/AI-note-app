@@ -13,7 +13,7 @@ router.post("/login",micro.post_login);
 router.get("/signup",micro.signup);
 router.post("/signup",micro.post_signup);
 router.get("/profile",micro.profile);
-router.get("/explore",micro.)
+router.get("/explore",micro.explore);
 module.exports = router;
 
 

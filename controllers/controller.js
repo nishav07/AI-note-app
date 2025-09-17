@@ -99,5 +99,6 @@ module.exports = {
     post_login,
     signup,
     post_signup,
-    profile
+    profile,
+    explore
 }

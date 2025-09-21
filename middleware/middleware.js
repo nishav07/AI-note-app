@@ -1,3 +1,5 @@
+const bcrypt = require("bcrypt");
+
 
 function hello(req,res,next){
     console.log("hello world");

@@ -2,7 +2,6 @@ const { json } = require("express");
 const {pool} = require("../config/db");
 const bcrypt = require("bcrypt");
 const middlewares = require("../middleware/middleware");
-const flash = middlewares.flash;
 
 function send(req,res){
     res.render("index.ejs")
@@ -55,6 +54,7 @@ async function post_signup (req,res){
     try{
         await pool.query("INSERT INTO users (username,email,password) VALUES(?,?,?)",[username,email,password]);
         console.log("hello form signup db");
+        req.flash("success","flatu hai yaar ye");
         res.redirect("/")
     } catch(err){
         console.log(err);

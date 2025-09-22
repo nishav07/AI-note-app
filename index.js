@@ -22,7 +22,6 @@ const port = 6969;
 const {pool} = require("./config/db")
 const { test } = require("./config/db")
 const middlewares = require("./middleware/middleware");
-app.use(middlewares.hello)
 
 const postRoute = require("./routes/routers");
 app.use("/",postRoute);

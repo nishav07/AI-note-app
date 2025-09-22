@@ -1,6 +1,8 @@
 const { json } = require("express");
 const {pool} = require("../config/db");
 const bcrypt = require("bcrypt");
+const middlewares = require("../middleware/middleware");
+const flash = middlewares.flash;
 
 function send(req,res){
     res.render("index.ejs")
@@ -37,6 +39,7 @@ function newNotes(req,res){
 }
 
 function login (req,res){
+
     res.render("login.ejs")
 }
 

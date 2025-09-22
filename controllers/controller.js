@@ -1,6 +1,6 @@
 const { json } = require("express");
 const {pool} = require("../config/db");
-
+const bcrypt = require("bcrypt");
 
 function send(req,res){
     res.render("index.ejs")

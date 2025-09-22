@@ -1,13 +1,3 @@
-const bcrypt = require("bcrypt");
-
-function hash(pass){
-    const saltRounds = 10;
-    const hashPas = bcrypt.hash(pass,saltRounds);
-}
-
-function verify(pass,passDB){
-    const check = bcrypt.compare(pass,passDB);
-}
 
 function hello(req,res,next){
     console.log("hello world");

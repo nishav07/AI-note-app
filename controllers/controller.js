@@ -54,7 +54,7 @@ async function post_signup (req,res){
     try{
         await pool.query("INSERT INTO users (username,email,password) VALUES(?,?,?)",[username,email,password]);
         console.log("hello form signup db");
-        req.flash("success","flatu hai yaar ye");
+        req.flash("success","user signup");
         res.redirect("/")
     } catch(err){
         console.log(err);

@@ -77,18 +77,21 @@ async function post_login (req,res){
     try {
         const [rows] = await pool.query("SELECT username,password FROM users WHERE username = ?",[username]);
         console.log(rows);
-        const hashPass = rows[0].password;
-        const verify = await middlewares.verify(password,hashPass);
-
+        
         if(rows.length === 0){
             req.flash("error" , "user not found");
             return res.redirect("/login");
         }
+
+        const hashPass = rows[0].password;
+        const verify = await middlewares.verify(password,hashPass);
+        
      if(verify){
+        req.session.user = rows[0];
         req.flash("success" , "login succefull")
         res.redirect("/home")
      } else {
-        req.flash("error" , "Invalid Details")
+        req.flash("error" , "Invalid Password")
         res.redirect("/login");
      }
     } catch (error) {

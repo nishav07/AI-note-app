@@ -85,10 +85,10 @@ async function post_login (req,res){
 
         const hashPass = rows[0].password;
         const verify = await middlewares.verify(password,hashPass);
-        
+
      if(verify){
         req.session.user = rows[0];
-        req.flash("success" , "login succefull")
+        req.flash("success" , "login succefull");
         res.redirect("/home")
      } else {
         req.flash("error" , "Invalid Password")

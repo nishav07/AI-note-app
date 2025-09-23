@@ -48,17 +48,21 @@ function signup (req,res){
 
 async function post_signup (req,res){
     const {username,email,password} = req.body;
+    const hashPass = await middlewares.hashing(password);
+    console.log([username,email,password,hashPass]);
 
-    console.log([username,email,password]);
+    
 
     try{
-        await pool.query("INSERT INTO users (username,email,password) VALUES(?,?,?)",[username,email,password]);
+        await pool.query("INSERT INTO users (username,email,password) VALUES(?,?,?)",[username,email,hashPass]);
         console.log("hello form signup db");
-        req.flash("success","user signup");
+        req.flash("success","SingnUp completed");
         res.redirect("/")
     } catch(err){
         console.log(err);
-        res.status(500).send("database error");
+        req.flash("error","Signup Failed Due to Internal Error");
+        // res.status(500).send("database error");
+        res.redirect("/");
     }
 }
 
@@ -71,16 +75,27 @@ async function post_login (req,res){
     })
 
     try {
-        const [rows] = await pool.query("SELECT username,password FROM users WHERE username = ? AND password = ?",[username,password]);
+        const [rows] = await pool.query("SELECT username,password FROM users WHERE username = ?",[username]);
         console.log(rows);
-     if(rows.length > 0){
+        const hashPass = rows[0].password;
+        const verify = await middlewares.verify(password,hashPass);
+
+        if(rows.length === 0){
+            req.flash("error" , "user not found");
+            return res.redirect("/login");
+        }
+     if(verify){
+        req.flash("success" , "login succefull")
         res.redirect("/home")
      } else {
-        res.redirect("/");
+        req.flash("error" , "Invalid Details")
+        res.redirect("/login");
      }
     } catch (error) {
         console.log(error)
-        res.status(500).send("invalid details");
+        // res.status(500).send("invalid details");
+        req.flash("error" , "User not Found")
+        res.redirect("/login")
     }
 
 }

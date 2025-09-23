@@ -16,9 +16,14 @@ const password = "qwerty123$"
 async function check() {
     const hashpass = await hash(password);
     console.log(hashpass);
+    let is = await verify(password,hashpass);
+    console.log(is);
+
 }
 
 check();
+
+
 
 // const check = verify(password,hashpass);
 

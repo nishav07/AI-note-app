@@ -1,7 +1,7 @@
-const sessions = require('express-session');
+const session = require('express-session');
 
 
-const sessionCofig = sessions(
+const sessionCofig = session(
   {
   secret:process.env.SECRET_KEY,        
   resave: false,                   

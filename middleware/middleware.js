@@ -18,9 +18,18 @@ async function verify(pass,passDB){
     return check;
 }
 
+function isLoggedIn(req,res,next){
+    if(req.session && req.session.user){
+        next()
+    } else {
+        req.flash("error","Login first")
+        res.redirect("/")
+    }
+}
 
 module.exports = {
     flash,
     hashing,
-    verify
+    verify,
+    isLoggedIn
 }

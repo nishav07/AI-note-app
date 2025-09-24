@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 require("dotenv").config()
 const path = require("path");
-const sessions = require("express-session");
+const session = require("express-session");
 const bcrypt = require("bcrypt");
 const flash = require("connect-flash");
 const ejs = require("ejs");

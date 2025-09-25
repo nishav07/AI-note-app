@@ -89,7 +89,7 @@ async function post_login (req,res){
      if(verify){
         req.session.user = rows[0];
         req.flash("success" , "login succefull")
-        res.redirect("/components")
+        res.redirect("/Dashboard")
      } else {
         req.flash("error" , "Invalid Password")
         res.redirect("/login");

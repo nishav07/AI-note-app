@@ -89,7 +89,7 @@ async function post_login (req,res){
      if(verify){
         req.session.user = rows[0];
         req.flash("success" , "login succefull")
-        res.redirect("/home")
+        res.redirect("/components")
      } else {
         req.flash("error" , "Invalid Password")
         res.redirect("/login");
@@ -111,9 +111,10 @@ function explore(req,res){
     res.render("explore.ejs")
 }
 
-function SPA(req,res){
+async function SPA(req,res){
     const page = req.params.page;
-    req.render(`components/${page}`);
+    const [rows] = await pool.query("SELECT title,content FROM notes");
+    res.render(`components/${page}`,{data:rows});
 }
 module.exports = {
     send,

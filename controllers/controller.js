@@ -110,6 +110,11 @@ function profile(req,res){
 function explore(req,res){
     res.render("explore.ejs")
 }
+
+function SPA(req,res){
+    const page = req.params.page;
+    req.render(`components/${page}`);
+}
 module.exports = {
     send,
     notesData,
@@ -121,5 +126,6 @@ module.exports = {
     signup,
     post_signup,
     profile,
-    explore
+    explore,
+    SPA
 }

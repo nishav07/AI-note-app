@@ -11,5 +11,47 @@ function loadPage(page) {
     .then(res => res.text())
     .then(html => {
       document.getElementById("content").innerHTML = html;
+      initPage(page);
     });
+}
+
+function initPage(page) {
+  if (page === "feed") {
+    initFeedPage();
+  } else if (page === "write") {
+    initNotesPage();
+  } else if (page === "explore") {
+    initExplorePage();
+  }
+}
+
+function initNotesPage() {
+  const publishBtn = document.getElementById("publishbtn");
+  const draftBtn = document.getElementById("draftbtn");
+  const myform = document.getElementById("myForm");
+
+  if (!publishBtn || !myform) return;
+
+  publishBtn.addEventListener("click", async () => {
+    let validity = myform.checkValidity();
+    if (!validity) {
+      myform.reportValidity();
+      return;
+    }
+
+    let form = new FormData(myform);
+    const { title, story } = Object.fromEntries(form.entries());
+
+    await fetch("/new", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, story })
+    });
+
+    window.location.href = "/home";
+  });
+
+  draftBtn?.addEventListener("click", () => {
+    console.log("draft button clicked");
+  });
 }

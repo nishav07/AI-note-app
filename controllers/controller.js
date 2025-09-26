@@ -23,12 +23,11 @@ async function notesData(req,res){
     try {
         await pool.query("INSERT INTO notes (title,content) VALUES(?,?)",[title,content])
         console.log("hello form controlller db")
-        res.redirect("/home")
+        res.redirect("/Dashboard")
     } catch (err) {
         console.error(err);
         res.status(500).send("Database error");  
     }
-    res.send("data aaaaaaaa gyaaaaaaaaa")
 }
 
 

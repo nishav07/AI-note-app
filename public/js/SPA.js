@@ -48,7 +48,7 @@ function initNotesPage() {
       body: JSON.stringify({ title, story })
     });
 
-    window.location.href = "/home";
+    window.location.href = "/Dashboard";
   });
 
   draftBtn?.addEventListener("click", () => {

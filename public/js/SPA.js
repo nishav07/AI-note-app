@@ -22,6 +22,8 @@ function initPage(page) {
     initNotesPage();
   } else if (page === "explore") {
     initExplorePage();
+  } else if (page === ""){
+    initFeedPage();
   }
 }
 

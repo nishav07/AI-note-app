@@ -20,16 +20,16 @@ publishBtn.addEventListener("click" ,async() => {
     const res = await fetch("/new",{
         method:"POST",
         headers :{
-            "Content-Type": "application/json"
+            "Content-Type":"application/json"
         },
         body: JSON.stringify({ title,story })
     })
+
+
     
 
-    
 
-
-    window.location.href = "/home"
+    window.location.href = "/Dashboard"
 })
 
 draftBtn.addEventListener("click" , () => {

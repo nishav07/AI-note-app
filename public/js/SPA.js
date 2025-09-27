@@ -51,6 +51,8 @@ function initNotesPage() {
     window.location.href = "/Dashboard";
   });
 
+  
+
   draftBtn?.addEventListener("click", () => {
     console.log("draft button clicked");
   });

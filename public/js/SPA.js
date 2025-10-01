@@ -6,6 +6,12 @@ document.querySelectorAll("a[data-page]").forEach(link => {
   });
 });
 
+
+
+document.addEventListener("DOMContentLoaded" , () => {
+  loadPage("feed")
+});
+
 function loadPage(page) {
   fetch(`/components/${page}`)
     .then(res => res.text())

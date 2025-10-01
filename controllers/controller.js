@@ -110,11 +110,13 @@ function explore(req,res){
     res.render("explore.ejs")
 }
 
-async function SPA(req,res){
-    const page = req.params.page;
-    const [rows] = await pool.query("SELECT title,content FROM notes");
-    res.render(`components/${page}`,{data:rows});
-}
+// async function SPA(req,res){
+//     const page = req.params.page;
+//     const [rows] = await pool.query("SELECT title,content FROM notes");
+//     res.render(`components/${page}`,{data:rows});
+// }
+
+
 module.exports = {
     send,
     notesData,
@@ -126,6 +128,6 @@ module.exports = {
     signup,
     post_signup,
     profile,
-    explore,
-    SPA
+    explore
+    // SPA
 }

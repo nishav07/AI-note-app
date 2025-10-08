@@ -32,6 +32,8 @@ async function notesData(req,res){
 
 
 
+
+
 function newNotes(req,res){
     res.render("newNotes.ejs");
 }

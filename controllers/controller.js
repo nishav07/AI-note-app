@@ -34,9 +34,9 @@ async function notesData(req,res){
 
 
 
-function newNotes(req,res){
-    res.render("newNotes.ejs");
-}
+// function newNotes(req,res){
+//     res.render("newNotes.ejs");
+// }
 
 function login (req,res){
 
@@ -74,7 +74,6 @@ async function post_login (req,res){
         username,
         password
     })
-
     
 
     try {
@@ -125,7 +124,6 @@ module.exports = {
     send,
     notesData,
     home,
-    newNotes,
     notesData,
     login,
     post_login,

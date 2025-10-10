@@ -8,7 +8,7 @@ const { isLoggedIn } = require("../middleware/middleware.js")
 
 router.get("/" ,micro.send);
 router.get("/Dashboard",isLoggedIn,micro.home);
-router.get("/new",isLoggedIn,micro.newNotes);
+// router.get("/new",isLoggedIn,micro.newNotes);
 router.post("/new",isLoggedIn,micro.notesData);
 router.get("/login",micro.login);
 router.post("/login",micro.post_login);

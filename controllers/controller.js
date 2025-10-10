@@ -75,6 +75,8 @@ async function post_login (req,res){
         password
     })
 
+    
+
     try {
         const [rows] = await pool.query("SELECT username,password FROM users WHERE username = ?",[username]);
         console.log(rows);

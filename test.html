@@ -11,7 +11,7 @@
 
    <div id="mainFeed" class="h-140 w-4/5 shadow-sm">
             <div id="feed" class="h-full w-full flex flex-col gap-8 overflow-y-hidden overflow-y-scroll hide">
-                <% for (let post of data) { %>
+
                 <div id="posts" class="w-full h-auto p-4 flex flex-col justify-start items-start gap-4 shadow-xl">
                     <div class="h-12 w-full flex justify-between items-center">
                         <div id="user-details" class="flex gap-4 items-center">
@@ -20,22 +20,30 @@
                         </div>
                         <a href="#" class="font-black text-2xl"><i class="fa-solid fa-ellipsis-vertical"></i></a>
                     </div>
-                    <h1 class="font-mono font-black text-2xl"><%= post.title %></h1>
-                    <p class="font-normal text-xl text-gray-600"><%= post.content %></p>
+                    <h1 class="font-mono font-black text-2xl"></h1>
+                    <p class="font-normal text-xl text-gray-600"></p>
                     <div class="flex gap-8" id="icon">
                         <a class="font-mono text-xl font-normal" href="#"><i class="fa-regular fa-heart"></i>0 Likes</a>
                         <a class="font-mono text-xl font-normal" href="#"><i class="fa-regular fa-comment"></i>0 Comments</a>
                 </div>
                 </div>
-                  <% } %>
+        
+
             </div>
         </div>
 
         <div id="extraFeatures" class="h-140 w-1/5 flex justify-center items-center shadow-xl">
             <div id="list" class="h-full w-full p-8 flex flex-col items-flex gap-8">
                 <h1 class="font-mono text-2xl font-black">Trendings</h1>
-               
+                <div class="font-normal font-mono text-xl flex flex-col gap-2">
+                    <p>#funstory</p>
+                    <p>#traveldiaries</p>
+                    <p>#reviews</p>
+                    <p>#shayri</p>
+                </div>
+        </div>
         </div>
 
+        
 </body>
 </html>

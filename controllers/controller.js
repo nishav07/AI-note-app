@@ -105,13 +105,13 @@ async function post_login (req,res){
 
 }
 
-function profile(req,res){
-    res.render("profile.ejs")
-}
+// function profile(req,res){
+//     res.render("profile.ejs")
+// }
 
-function explore(req,res){
-    res.render("explore.ejs")
-}
+// function explore(req,res){
+//     res.render("explore.ejs")
+// }
 
 async function SPA(req,res){
     const page = req.params.page;
@@ -129,7 +129,5 @@ module.exports = {
     post_login,
     signup,
     post_signup,
-    profile,
-    explore,
     SPA
 }

@@ -54,17 +54,7 @@
     const display = document.querySelector("#display");
 
     btn.addEventListener("click" , () => {
-
-          if(display.classList.contains("hidden")){
-            display.classList.remove("hidden");
-            return
-        } 
-
-        if(!display.classList.contains("hidden")){
-            display.classList.add("hidden");
-            return
-        }
-
+        display.classList.toggle("hidden")
     })
 
 </script>

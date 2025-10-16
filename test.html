@@ -26,7 +26,7 @@
                     <p class="font-normal text-xl text-gray-600"></p>
                     <div class="flex gap-8" id="icon">
                         <a class="font-mono text-xl font-normal" href="#"><i class="fa-regular fa-heart"></i>0 Likes</a>
-                        <a id="btn" class="font-mono text-xl font-normal" href="#"><i class="fa-regular fa-comment"></i>0 Comments</a>
+                        <a id="cbtn" class="font-mono text-xl font-normal" href="#"><i class="fa-regular fa-comment"></i>0 Comments</a>
                 </div>
                 </div>
             </div>
@@ -47,10 +47,10 @@
 
 <script>
 
-    const btn = document.querySelector("#btn");
+    const cbtn = document.querySelector("#cbtn");
     const display = document.querySelector("#display");
 
-    btn.addEventListener("click" , () => {
+    cbtn.addEventListener("click" , () => {
         display.classList.toggle("hidden")
     })
 

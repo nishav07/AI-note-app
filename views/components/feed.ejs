@@ -13,7 +13,7 @@
                     <p class="font-normal text-xl text-gray-600"><%= post.content %></p>
                     <div class="flex gap-8" id="icon">
                         <a class="font-mono text-xl font-normal" href="#"><i class="fa-regular fa-heart"></i>0 Likes</a>
-                        <a class="font-mono text-xl font-normal" href="#"><i class="fa-regular fa-comment"></i>0 Comments</a>
+                        <a id="cbtn" class="font-mono text-xl font-normal" href="#"><i class="fa-regular fa-comment"></i>0 Comments</a>
                 </div>
                 </div>
                   <% } %>
@@ -23,7 +23,7 @@
         <div id="extraFeatures" class="h-140 w-1/5 flex justify-center items-center shadow-xl">
             <div id="list" class="h-full w-full p-8 flex flex-col items-flex gap-8">
                 <h1 class="font-mono text-2xl font-black">Trendings</h1>
-                <div class="font-normal font-mono text-xl flex flex-col gap-2">
+                <div id="cdisplay" class="font-normal font-mono text-xl flex flex-col gap-2">
                     <p>#funstory</p>
                     <p>#traveldiaries</p>
                     <p>#reviews</p>

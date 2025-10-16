@@ -65,3 +65,13 @@ function initNotesPage() {
     console.log("draft button clicked");
   });
 }
+
+
+//-------------- comment secion toggle--------------------------------------------------------
+
+ const cbtn = document.querySelector("#cbtn");
+    const cdisplay = document.querySelector("#cdisplay");
+
+    cbtn.addEventListener("click" , () => {
+        cdisplay.classList.toggle("hidden")
+    })

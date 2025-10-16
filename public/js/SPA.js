@@ -21,6 +21,7 @@ function loadPage(page) {
     });
 }
 
+
 function initPage(page) {
   if (page === "feed") {
     initFeedPage();

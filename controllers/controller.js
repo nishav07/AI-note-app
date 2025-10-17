@@ -16,6 +16,7 @@ async function home(req,res){
 
 
 
+
 async function notesData(req,res){
     const title = req.body.title;
     const content = req.body.story;

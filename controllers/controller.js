@@ -11,7 +11,8 @@ function send(req,res){
 async function home(req,res){
     const [rows] = await pool.query("SELECT title,content FROM notes");
     console.log("initialdata",[rows]);
-    res.render("home.ejs",{data:rows});
+    const user = req.session.user;
+    res.render("home.ejs",{ user });//{data:rows}
 }
 
 
@@ -117,7 +118,7 @@ async function post_login (req,res){
 async function SPA(req,res){
     const page = req.params.page;
     const [rows] = await pool.query("SELECT title,content FROM notes");
-    res.render(`components/${page}`);
+    res.render(`components/${page}`,{data:rows});
 }
 
 

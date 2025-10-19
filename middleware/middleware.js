@@ -7,11 +7,13 @@ function flash(req,res,next){
     next();
 }
 
+
 async function hashing(pass){
     const saltRounds = 10;
     const hashPass = await bcrypt.hash(pass,saltRounds);
     return hashPass
 }
+
 
 async function verify(pass,passDB){
     const check = await bcrypt.compare(pass,passDB);

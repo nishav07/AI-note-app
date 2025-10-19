@@ -17,22 +17,22 @@ function loadPage(page) {
     .then(res => res.text())
     .then(html => {
       document.getElementById("content").innerHTML = html;
-      initPage(page);
+      // initPage(page);
     });
 }
 
 
-function initPage(page) {
-  if (page === "feed") {
-    initFeedPage();
-  } else if (page === "write") {
-    initNotesPage();
-  } else if (page === "explore") {
-    initExplorePage();
-  } else if (page === ""){
-    initFeedPage();
-  }
-}
+// function initPage(page) {
+//   if (page === "feed") {
+//     initFeedPage();
+//   } else if (page === "write") {
+//     initNotesPage();
+//   } else if (page === "explore") {
+//     initExplorePage();
+//   } else if (page === ""){
+//     initFeedPage();
+//   }
+// }
 
 function initNotesPage() {
   const publishBtn = document.getElementById("publishbtn");

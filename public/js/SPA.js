@@ -70,7 +70,12 @@ function initNotesPage() {
 
 //-------------- comment secion toggle--------------------------------------------------------
 
-do
+document.addEventListener('click' , (e) => {
+  if(e.target.matches("#cbtn")){
+    const section = e.target.closet("#extraFeatures").querySelector("#cdisplay");
+    section.classList.toggle("hidden");
+  }
+})
 
 //  const cbtn = document.querySelector("#cbtn");
 //     const cdisplay = document.querySelector("#cdisplay");

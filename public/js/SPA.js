@@ -70,9 +70,11 @@ function initNotesPage() {
 
 //-------------- comment secion toggle--------------------------------------------------------
 
- const cbtn = document.querySelector("#cbtn");
-    const cdisplay = document.querySelector("#cdisplay");
+do
 
-    cbtn.addEventListener("click" , () => {
-        cdisplay.classList.toggle("hidden")
-    })
+//  const cbtn = document.querySelector("#cbtn");
+//     const cdisplay = document.querySelector("#cdisplay");
+
+//     cbtn.addEventListener("click" , () => {
+//         cdisplay.classList.toggle("hidden")
+//     })

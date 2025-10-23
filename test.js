@@ -26,7 +26,9 @@ check();
 
 const arr = [2,3,4,5,6,7];
 
-arr.filter((val) => {
-    
+const newarr = arr.filter((val) => {
+    return val % 2
 })
+
+console.log("newarr")
 

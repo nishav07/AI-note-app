@@ -24,10 +24,8 @@ async function check() {
 check();
 
 
-const arr = [2,3,4,5,6,7];
+const Nestedarr = [2,3,4,[11,24],7];
 
-const arr2 = arr.reduce((p,c,i) => {
-    return p + c
-})
+const arr = Nestedarr.flat(1)
 
-console.log(arr2)
+console.log(arr)

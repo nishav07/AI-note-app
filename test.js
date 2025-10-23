@@ -24,5 +24,9 @@ async function check() {
 check();
 
 
+const arr = [2,3,4,5,6,7];
 
+arr.filter((val) => {
+    
+})
 

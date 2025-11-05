@@ -106,6 +106,7 @@ async function post_login (req,res){
 
 }
 
+
 // function profile(req,res){
 //     res.render("profile.ejs")
 // }
@@ -123,6 +124,8 @@ async function SPA(req,res){
         user:user 
     });
 }
+
+
 
 
 module.exports = {

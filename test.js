@@ -13,6 +13,8 @@ async function verify(pass,passDB){
 
 const password = "qwerty123$"
 
+
+
 async function check() {
     const hashpass = await hash(password);
     console.log(hashpass);

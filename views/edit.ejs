@@ -6,6 +6,16 @@
     <title></title>
 </head>
 <body>
-    
+     <main class="h-screen w-full flex flex-col justify-center items-center text-black">
+        <form action="/" class="p-8 h-auto w-120 border-2  flex flex-col justify-center items-center gap-8 rounded-lg" method="post">
+            <h2 class="font-mono text-2xl font-black">Login into the sea of stories :D</h2>
+            <input class="h-12 w-full border-grey-400 border-b-2 bg-stone-100 p-4 outline-none rounded-t-lg font-medium" type="text" placeholder="Username" name="username" readonly>
+            <input class="h-12 w-full border-grey-400 border-b-2 bg-stone-100 p-4 outline-none rounded-t-lg font-medium" type="password" name="password" placeholder="******" readonly>
+            <input class="h-12 w-full border-grey-400 border-b-2 bg-stone-100 p-4 outline-none rounded-t-lg font-medium" type="email" placeholder="@xyz.com" name="email" readonly>
+            <textarea class="min-h-[16rem] w-5/6 border-gray-300 border-2 p-4 rounded-lg resize-none outline-none"
+            name="bio" placeholder="Write your Bio...." required></textarea>
+            <button class="h-12 w-32 bg-black font-medium text-xl text-white p-2 rounded-full" type="submit">Change</button>
+        </form>
+    </main>
 </body>
 </html>

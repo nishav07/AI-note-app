@@ -106,6 +106,13 @@ function loadProfilePage(page) {
     .then(res => res.text())
     .then(html => {
       document.getElementById("profile-content").innerHTML = html;
-      // initPage(page);
     });
 }
+
+document.addEventListener("click", (e) => {
+  const tab = e.target.dataset.profile;
+  if (!tab) return;
+
+  e.preventDefault();
+  loadProfilePage(tab);
+});

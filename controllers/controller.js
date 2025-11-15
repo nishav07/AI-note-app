@@ -125,7 +125,9 @@ async function SPA(req,res){
     });
 }
 
-
+async function edit(req,res) {
+    res.render("edit.ejs")
+}
 
 
 module.exports = {
@@ -137,5 +139,6 @@ module.exports = {
     post_login,
     signup,
     post_signup,
-    SPA
+    SPA,
+    edit
 }

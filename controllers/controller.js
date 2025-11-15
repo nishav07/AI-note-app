@@ -125,7 +125,7 @@ async function SPA(req,res){
     });
 }
 
-async function SPA(req,res){
+async function profileSPA(req,res){
     const page = req.params.page;
     const [rows] = await pool.query("SELECT title,content FROM notes");
     const user = req.session.user;
@@ -152,5 +152,6 @@ module.exports = {
     signup,
     post_signup,
     SPA,
-    edit
+    edit,
+    profileSPA
 }

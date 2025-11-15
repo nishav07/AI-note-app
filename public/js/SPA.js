@@ -84,3 +84,28 @@ document.addEventListener('click' , (e) => {
 //         cdisplay.classList.toggle("hidden")
 //     })
 
+
+//----------------------------------------------------------------------------------------------------------------
+
+document.querySelectorAll("a[data-profile]").forEach(link => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    const page = e.currentTarget.getAttribute("data-profile");
+    loadProfilePage(page);
+  });
+});
+
+
+
+document.addEventListener("DOMContentLoaded" , () => {
+  loadPage("feed")
+});
+
+function loadProfilePage(page) {
+  fetch(`/profile/${page}`)
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("profile-content").innerHTML = html;
+      // initPage(page);
+    });
+}

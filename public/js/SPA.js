@@ -96,7 +96,6 @@ document.querySelectorAll("a[data-profile]").forEach(link => {
 });
 
 
-
 document.addEventListener("DOMContentLoaded" , () => {
   loadPage("feed")
 });

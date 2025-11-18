@@ -88,6 +88,11 @@ document.addEventListener('click' , (e) => {
 
 //----------------------------------------------------------------------------------------------------------------
 
+document.addEventListener("click", (e) => {
+  if(e.target.matches("a[data-page]")){
+    loadProfilePage("post");
+  }
+})
 
 function loadProfilePage(page) {
   fetch(`/profile/${page}`)

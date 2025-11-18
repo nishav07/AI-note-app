@@ -97,6 +97,14 @@ document.querySelectorAll("a[data-profile]").forEach(link => {
   });
 });
 
+// const profileBox = document.querySelector('#profile-box');
+
+// profileBox.forEach((e) => {
+//   e.addEventListener("click" , () => {
+//     e.classList.add("text-5xl")
+//   })
+// })
+
 
 
 

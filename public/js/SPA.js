@@ -90,15 +90,14 @@ document.addEventListener('click' , (e) => {
 
 document.querySelectorAll("a[data-profile]").forEach(link => {
   link.addEventListener("click", (e) => {
+    loadProfilePage("post");
     e.preventDefault();
     const page = e.currentTarget.getAttribute("data-profile");
     loadProfilePage(page);
   });
 });
 
-document.addEventListener("DOMContentLoaded" , () => {
-  loadProfilePage("post");
-});
+
 
 
 function loadProfilePage(page) {

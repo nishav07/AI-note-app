@@ -88,25 +88,6 @@ document.addEventListener('click' , (e) => {
 
 //----------------------------------------------------------------------------------------------------------------
 
-document.querySelectorAll("a[data-profile]").forEach(link => {
-  link.addEventListener("click", (e) => {
-    loadProfilePage("post");
-    e.preventDefault();
-    const page = e.currentTarget.getAttribute("data-profile");
-    loadProfilePage(page);
-  });
-});
-
-// const profileBox = document.querySelector('#profile-box');
-
-// profileBox.forEach((e) => {
-//   e.addEventListener("click" , () => {
-//     e.classList.add("text-5xl")
-//   })
-// })
-
-
-
 
 function loadProfilePage(page) {
   fetch(`/profile/${page}`)
@@ -116,10 +97,22 @@ function loadProfilePage(page) {
     });
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  loadProfilePage("post");
+});
+
 document.addEventListener("click", (e) => {
-  const tab = e.target.dataset.profile;
-  if (!tab) return;
+  if (!e.target.matches("a[data-profile]")) return;
 
   e.preventDefault();
-  loadProfilePage(tab);
+
+  
+  const page = e.target.dataset.profile;
+  loadProfilePage(page);
+
+ 
+  document.querySelectorAll('#profile-box a')
+    .forEach(a => a.classList.remove("border-b-2", "border-indigo-600", "text-indigo-600"));
+
+  e.target.classList.add("border-b-2", "border-indigo-600", "text-indigo-600");
 });

@@ -9,7 +9,7 @@ document.querySelectorAll("a[data-page]").forEach(link => {
 
 
 document.addEventListener("DOMContentLoaded" , () => {
-  loadPage("feed")
+  loadPage("feed");
 });
 
 function loadPage(page) {
@@ -97,7 +97,7 @@ document.querySelectorAll("a[data-profile]").forEach(link => {
 
 
 document.addEventListener("DOMContentLoaded" , () => {
-  loadPage("feed")
+  loadProfilePage("post")
 });
 
 function loadProfilePage(page) {

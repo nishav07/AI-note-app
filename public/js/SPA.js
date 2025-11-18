@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded" , () => {
   loadPage("feed");
 });
 
+
 function loadPage(page) {
   fetch(`/components/${page}`)
     .then(res => res.text())
@@ -95,10 +96,10 @@ document.querySelectorAll("a[data-profile]").forEach(link => {
   });
 });
 
-
 document.addEventListener("DOMContentLoaded" , () => {
-  loadProfilePage("post")
+  loadProfilePage("post");
 });
+
 
 function loadProfilePage(page) {
   fetch(`/profile/${page}`)

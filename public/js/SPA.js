@@ -28,6 +28,7 @@ function loadPage(page) {
 function initPage(page) {
   if (page === "feed") {
     initFeedPage();
+    initcbtn();
   } else if (page === "write") {
     initNotesPage();
   } else if (page === "explore") {
@@ -74,12 +75,14 @@ function initNotesPage() {
 
 //-------------- comment secion toggle--------------------------------------------------------
 
-document.addEventListener('click' , (e) => {
+function initcbtn(){
+  document.addEventListener('click' , (e) => {
   if(e.target.matches("#cbtn")){
     const section = e.target.closest("#extraFeatures").querySelector("#cdisplay");
     section.classList.toggle("hidden");
   }
 })
+}
 
 //  const cbtn = document.querySelector("#cbtn");
 //     const cdisplay = document.querySelector("#cdisplay");

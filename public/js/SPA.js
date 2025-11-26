@@ -13,27 +13,29 @@ document.addEventListener("DOMContentLoaded" , () => {
 });
 
 
+
+
 function loadPage(page) {
   fetch(`/components/${page}`)
     .then(res => res.text())
     .then(html => {
       document.getElementById("content").innerHTML = html;
-      // initPage(page);
+      initPage(page);
     });
 }
 
 
-// function initPage(page) {
-//   if (page === "feed") {
-//     initFeedPage();
-//   } else if (page === "write") {
-//     initNotesPage();
-//   } else if (page === "explore") {
-//     initExplorePage();
-//   } else if (page === ""){
-//     initFeedPage();
-//   }
-// }
+function initPage(page) {
+  if (page === "feed") {
+    initFeedPage();
+  } else if (page === "write") {
+    initNotesPage();
+  } else if (page === "explore") {
+    initExplorePage();
+  } else if (page === ""){
+    initFeedPage();
+  }
+}
 
 function initNotesPage() {
   const publishBtn = document.getElementById("publishbtn");
@@ -43,6 +45,7 @@ function initNotesPage() {
   if (!publishBtn || !myform) return;
 
   publishBtn.addEventListener("click", async () => {
+    console.log('helllo from publish btn');
     let validity = myform.checkValidity();
     if (!validity) {
       myform.reportValidity();
@@ -73,7 +76,7 @@ function initNotesPage() {
 
 document.addEventListener('click' , (e) => {
   if(e.target.matches("#cbtn")){
-    const section = e.target.closet("#extraFeatures").querySelector("#cdisplay");
+    const section = e.target.closest("#extraFeatures").querySelector("#cdisplay");
     section.classList.toggle("hidden");
   }
 })

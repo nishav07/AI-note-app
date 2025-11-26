@@ -3,6 +3,7 @@ const {pool} = require("../config/db");
 const bcrypt = require("bcrypt");
 const middlewares = require("../middleware/middleware");
 
+
 function send(req,res){
     res.render("index.ejs")
 }
@@ -20,9 +21,12 @@ async function home(req,res){
 async function notesData(req,res){
     const title = req.body.title;
     const content = req.body.story;
+    const {user_id} = req.session.user;
+    console.log(req.session.user);
+    console.log(user_id);
     console.log({title,content})
     try {
-        await pool.query("INSERT INTO notes (title,content) VALUES(?,?)",[title,content])
+        await pool.query("INSERT INTO notes (title,content,user_id) VALUES(?,?,?)",[title,content,user_id])
         console.log("hello form controlller db")
         res.redirect("/Dashboard")
     } catch (err) {
@@ -78,7 +82,7 @@ async function post_login (req,res){
     
 
     try {
-        const [rows] = await pool.query("SELECT username,password FROM users WHERE username = ?",[username]);
+        const [rows] = await pool.query("SELECT * FROM users WHERE username = ?",[username]);
         console.log(rows);
         
         if(rows.length === 0){

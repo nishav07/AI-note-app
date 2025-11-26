@@ -27,8 +27,6 @@ publishBtn.addEventListener("click" ,async() => {
 
 
     
-
-
     window.location.href = "/Dashboard"
 })
 

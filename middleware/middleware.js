@@ -29,6 +29,7 @@ function isLoggedIn(req,res,next){
     }
 }
 
+
 module.exports = {
     flash,
     hashing,

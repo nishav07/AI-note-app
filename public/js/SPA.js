@@ -27,8 +27,8 @@ function loadPage(page) {
 
 function initPage(page) {
   if (page === "feed") {
-    initFeedPage();
-    initcbtn();
+    // initFeedPage();
+    initCommnetSec();
   } else if (page === "write") {
     initNotesPage();
   } else if (page === "explore") {
@@ -73,24 +73,39 @@ function initNotesPage() {
 }
 
 
-//-------------- comment secion toggle--------------------------------------------------------
+//-------------- comment secion logic----------------------------------------------------------------------
 
-function initcbtn(){
-  document.addEventListener('click' , (e) => {
-  if(e.target.matches("#cbtn")){
-    const section = e.target.closest("#extraFeatures").querySelector("#cdisplay");
-    section.classList.toggle("hidden");
-  }
+// function initcbtn(){
+//   document.addEventListener('click' , (e) => {
+//   if(e.target.matches("#cbtn")){
+//     const section = e.target.closest("#extraFeatures").querySelector("#cdisplay");
+//     section.classList.toggle("hidden");
+//   }
+// })
+// }
+
+// document.addEventListener("click", (e) => {
+//   if(e.target.matches("a[data-page]")){
+//     loadProfilePage("post");
+//   }
+// })
+
+// function loadProfilePage(page) {
+//   fetch(`/profile/${page}`)
+//     .then(res => res.text())
+//     .then(html => {
+//       document.getElementById("profile-content").innerHTML = html;
+//     });
+// }
+
+function initCommnetSec (){
+  const x = document.querySelector("#cbtn");
+  const y = document.querySelector("#cdisplay")
+x.addEventListener("click", () => {
+  console.log("btn clciked fromx x")
+  y.classList.toggle("hidden");
 })
 }
-
-//  const cbtn = document.querySelector("#cbtn");
-//     const cdisplay = document.querySelector("#cdisplay");
-
-//     cbtn.addEventListener("click" , () => {
-//         cdisplay.classList.toggle("hidden")
-//     })
-
 
 //----------------------------------------------------------------------------------------------------------------
 
@@ -108,9 +123,9 @@ function loadProfilePage(page) {
     });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  loadProfilePage("post");
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   loadProfilePage("post");
+// });
 
 document.addEventListener("click", (e) => {
   if (!e.target.matches("a[data-profile]")) return;
@@ -121,7 +136,6 @@ document.addEventListener("click", (e) => {
   const page = e.target.dataset.profile;
   loadProfilePage(page);
 
- 
   document.querySelectorAll('#profile-box a')
     .forEach(a => a.classList.remove("border-b-2", "border-indigo-600", "text-indigo-600"));
 

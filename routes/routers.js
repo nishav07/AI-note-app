@@ -17,8 +17,9 @@ router.post("/signup",micro.post_signup);
 // router.get("/profile",isLoggedIn,micro.profile);
 // router.get("/explore",isLoggedIn,micro.explore);
 router.get("/components/:page",isLoggedIn,micro.SPA);
-router.get("/edit",isLoggedIn);
+router.get("/edit",isLoggedIn,micro.edit);
 router.get("/profile/:page",isLoggedIn,micro.profileSPA);
+router.get("/Dashbaord/:page",isLoggedIn,)
 
 module.exports = router;
 

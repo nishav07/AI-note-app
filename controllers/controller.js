@@ -145,6 +145,9 @@ async function edit(req,res) {
     res.render("edit.ejs")
 }
 
+async function comments(req,res){
+    
+}
 
 module.exports = {
     send,

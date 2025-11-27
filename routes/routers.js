@@ -19,7 +19,7 @@ router.post("/signup",micro.post_signup);
 router.get("/components/:page",isLoggedIn,micro.SPA);
 router.get("/edit",isLoggedIn,micro.edit);
 router.get("/profile/:page",isLoggedIn,micro.profileSPA);
-router.get("/Dashbaord/:page",isLoggedIn,)
+router.get("/Dashboard/:page",isLoggedIn,micro.comments);
 
 module.exports = router;
 

@@ -84,28 +84,32 @@ function initNotesPage() {
 // })
 // }
 
-// document.addEventListener("click", (e) => {
-//   if(e.target.matches("a[data-page]")){
-//     loadProfilePage("post");
-//   }
-// })
+document.addEventListener("click", (e) => {
+ const btn = e.target.closest("button[data-type]");
+if (!btn) return;
 
-// function loadProfilePage(page) {
-//   fetch(`/profile/${page}`)
-//     .then(res => res.text())
-//     .then(html => {
-//       document.getElementById("profile-content").innerHTML = html;
-//     });
-// }
+const page = btn.dataset.type;
 
-function initCommnetSec (){
-  const x = document.querySelector("#cbtn");
-  const y = document.querySelector("#cdisplay")
-x.addEventListener("click", () => {
-  console.log("btn clciked fromx x")
-  y.classList.toggle("hidden");
+loadComments(page);
 })
+
+function loadComments(page) {
+  fetch(`/Dashboard/${page}`)
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("cdisplay").innerHTML = html;
+    });
+    // initCommnetSec();
 }
+
+// function initCommnetSec(){
+//   const x = document.querySelector("#cbtn");
+//   const y = document.querySelector("#cdisplay")
+// x.addEventListener("click", () => {
+//   console.log("btn clciked fromx x")
+//   y.classList.toggle("hidden");
+// })
+// }
 
 //----------------------------------------------------------------------------------------------------------------
 

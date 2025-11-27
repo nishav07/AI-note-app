@@ -146,7 +146,8 @@ async function edit(req,res) {
 }
 
 async function comments(req,res){
-    
+    const page = req.params.page;
+    res.render(`components3/${page}`);
 }
 
 module.exports = {
@@ -160,5 +161,6 @@ module.exports = {
     post_signup,
     SPA,
     edit,
-    profileSPA
+    profileSPA,
+    comments
 }

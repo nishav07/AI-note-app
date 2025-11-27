@@ -28,7 +28,7 @@ function loadPage(page) {
 function initPage(page) {
   if (page === "feed") {
     // initFeedPage();
-    initCommnetSec();
+    // initCommnetSec();
   } else if (page === "write") {
     initNotesPage();
   } else if (page === "explore") {
@@ -145,3 +145,16 @@ document.addEventListener("click", (e) => {
 
   e.target.classList.add("border-b-2", "border-indigo-600", "text-indigo-600");
 });
+
+
+//------------------------ likes & commnet mechnaismssnwfjd,-----------------------------
+
+const lbtn = document.querySelector("#lbtn");
+const licon = document.querySelector("#like-icon")
+
+lbtn.addEventListener("click", () => {
+  licon.classList.toggle("text-red-500");
+  licon.classList.toggle("fa-solid");
+  licon.classList.toggle("fa-regular");
+})
+

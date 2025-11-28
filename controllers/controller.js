@@ -158,13 +158,19 @@ async function likes(req,res){
         userID
     })
 
-     await pool.query("INSERT INTO notes_likes (user_id,notesID) VALUES(?,?)",[postID,userID]);
-        console.log("like ka data insert ho gya");
+    let isliked = null;
+
     const [rows] = await pool.query("SELECT * FROM notes_likes WHERE user_id = ? AND notesID = ?",[userID,postID])
     if(rows.length === 0){
-        console.log("0 aaayaa hai")
+        console.log("likeeeeee aaayaa hai")
+         await pool.query("UPDATE notes SET like_count = like_count + 1 WHERE notesID = ?",[postID])
+         await pool.query("INSERT INTO notes_likes (user_id,notesID) VALUES(?,?)",[userID,postID]);
+        let isliked = true;
     } else {
-        console.log("null aaya haii")
+        console.log("ig user has already liked it now disliking")
+        await pool.query("DELETE FROM notes_likes WHERE user_id = ? AND notesID = ?",[userID,postID])
+        await pool.query("UPDATE notes SET like_count = like_count - 1 WHERE notesID = ?",[postID])
+        let isliked = false;
     }
 
     res.redirect("/Dashboard")

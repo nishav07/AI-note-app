@@ -20,7 +20,7 @@ router.get("/components/:page",isLoggedIn,micro.SPA);
 router.get("/edit",isLoggedIn,micro.edit);
 router.get("/profile/:page",isLoggedIn,micro.profileSPA);
 router.get("/Dashboard/:page",isLoggedIn,micro.comments);
-
+router.post("/likes",isLoggedIn,micro.likes)
 module.exports = router;
 
 

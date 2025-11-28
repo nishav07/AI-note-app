@@ -150,6 +150,18 @@ async function comments(req,res){
     res.render(`components3/${page}`);
 }
 
+async function likes(req,res){
+    const {postID,userID} = req.body;
+    console.log('backend se ')
+    console.log({
+        postID,
+        userID
+    })
+
+    res.redirect("/Dashboard")
+}
+
+
 module.exports = {
     send,
     notesData,
@@ -162,5 +174,6 @@ module.exports = {
     SPA,
     edit,
     profileSPA,
-    comments
+    comments,
+    likes
 }

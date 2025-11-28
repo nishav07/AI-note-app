@@ -157,21 +157,25 @@ document.addEventListener("click", (e) => {
       const postID = btn.dataset.postid;
       const userID = btn.dataset.userid;
       const icon = btn.querySelector("[data-like-icon]");
-      console.log({
-        postID,
-        userID
-      })
+      // console.log({
+      //   postID,
+      //   userID
+      // })
 
       icon.classList.toggle("text-red-500");
       icon.classList.toggle("fa-solid");
       icon.classList.toggle("fa-regular");
 
-      await fetch("/likes", {
+    }
+ const btn = e.target.closest("[data-like-btn]");
+      const postID = btn.dataset.postid;
+      const userID = btn.dataset.userid;
+    await fetch("/likes", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ postID, userID })
     });
-    }
+    //  window.location.href = "/Dashboard";
   })
 
 }

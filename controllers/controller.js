@@ -158,6 +158,15 @@ async function likes(req,res){
         userID
     })
 
+     await pool.query("INSERT INTO notes_likes (user_id,notesID) VALUES(?,?)",[postID,userID]);
+        console.log("like ka data insert ho gya");
+    const [rows] = await pool.query("SELECT * FROM notes_likes WHERE user_id = ? AND notesID = ?",[userID,postID])
+    if(rows.length === 0){
+        console.log("0 aaayaa hai")
+    } else {
+        console.log("null aaya haii")
+    }
+
     res.redirect("/Dashboard")
 }
 

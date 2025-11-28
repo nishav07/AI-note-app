@@ -29,6 +29,7 @@ function initPage(page) {
   if (page === "feed") {
     // initFeedPage();
     // initCommnetSec();
+    likebtn();
   } else if (page === "write") {
     initNotesPage();
   } else if (page === "explore") {
@@ -149,12 +150,21 @@ document.addEventListener("click", (e) => {
 
 //------------------------ likes & commnet mechnaismssnwfjd,-----------------------------
 
-const lbtn = document.querySelector("#lbtn");
-const licon = document.querySelector("#like-icon")
+ function likebtn(){
+  document.addEventListener('click', (e) => {
+    if(e.target.closest("[data-like-btn]")){
+      const btn = e.target.closest("[data-like-btn]");
+      const postID = btn.dataset.postid;
+      const userID = btn.dataset.userid;
+      const icon = btn.querySelector("[data-like-icon]");
+      console.log({
+        postID,
+        userID
+      })
+      icon.classList.toggle("text-red-500");
+      icon.classList.toggle("fa-solid");
+      icon.classList.toggle("fa-regular");
+    }
 
-lbtn.addEventListener("click", () => {
-  licon.classList.toggle("text-red-500");
-  licon.classList.toggle("fa-solid");
-  licon.classList.toggle("fa-regular");
-})
-
+  })
+}

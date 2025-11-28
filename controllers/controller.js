@@ -121,7 +121,7 @@ async function post_login (req,res){
 
 async function SPA(req,res){
     const page = req.params.page;
-    const [rows] = await pool.query("SELECT title,content FROM notes");
+    const [rows] = await pool.query("SELECT title,content,notesID FROM notes");
     const user = req.session.user;
     res.render(`components/${page}`,{ 
         data:rows,
@@ -131,7 +131,7 @@ async function SPA(req,res){
 
 async function profileSPA(req,res){
     const page = req.params.page;
-    const [rows] = await pool.query("SELECT title,content FROM notes");
+    const [rows] = await pool.query("SELECT title,content,notesID FROM notes");
     const user = req.session.user;
     res.render(`components2/${page}`,{ 
         data:rows,

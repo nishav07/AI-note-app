@@ -151,7 +151,7 @@ document.addEventListener("click", (e) => {
 //------------------------ likes & commnet mechnaismssnwfjd,-----------------------------
 
  function likebtn(){
-  document.addEventListener('click', (e) => {
+  document.addEventListener('click', async(e) => {
     if(e.target.closest("[data-like-btn]")){
       const btn = e.target.closest("[data-like-btn]");
       const postID = btn.dataset.postid;
@@ -161,10 +161,17 @@ document.addEventListener("click", (e) => {
         postID,
         userID
       })
+
       icon.classList.toggle("text-red-500");
       icon.classList.toggle("fa-solid");
       icon.classList.toggle("fa-regular");
-    }
 
+      await fetch("/likes", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ postID, userID })
+    });
+    }
   })
+
 }

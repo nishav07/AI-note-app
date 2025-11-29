@@ -170,12 +170,17 @@ document.addEventListener("click", (e) => {
  const btn = e.target.closest("[data-like-btn]");
       const postID = btn.dataset.postid;
       const userID = btn.dataset.userid;
-    await fetch("/likes", {
+
+   const res =  await fetch("/likes", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ postID, userID })
     });
-    //  window.location.href = "/Dashboard";
+    
+    const data = res.json();
+    console.log(data);
+
+    btn.innerText = `Likes ${data.like_count}`;
   })
 
 }

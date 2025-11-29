@@ -158,8 +158,6 @@ async function likes(req,res){
         userID
     })
 
-    let isliked = null;
-
     const [rows] = await pool.query("SELECT * FROM notes_likes WHERE user_id = ? AND notesID = ?",[userID,postID]);
     if(rows.length === 0){
         console.log("likeeeeee aaayaa hai")
@@ -171,7 +169,7 @@ async function likes(req,res){
          return res.json({
             isliked:true,
             message:"user has liked",
-            data:likes,
+            data:likeCount,
          })
     } else {
 
@@ -182,11 +180,11 @@ async function likes(req,res){
         const [likes] = await pool.query("SELECT like_count FROM notes WHERE notesID = ?",[postID]);
         const likeCount = likes[0].like_count;
 
-        
+
         return res.json({
             isliked:false,
             message:"user has disliked",
-            data:likes,
+            data:likeCount,
          })
     }
 

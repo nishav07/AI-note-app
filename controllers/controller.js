@@ -152,7 +152,7 @@ async function comments(req,res){
 
 async function likes(req,res){
     const {postID,userID} = req.body;
-    console.log('backend se ')
+    console.log('backend se')
     console.log({
         postID,
         userID
@@ -160,20 +160,37 @@ async function likes(req,res){
 
     let isliked = null;
 
-    const [rows] = await pool.query("SELECT * FROM notes_likes WHERE user_id = ? AND notesID = ?",[userID,postID])
+    const [rows] = await pool.query("SELECT * FROM notes_likes WHERE user_id = ? AND notesID = ?",[userID,postID]);
     if(rows.length === 0){
         console.log("likeeeeee aaayaa hai")
          await pool.query("UPDATE notes SET like_count = like_count + 1 WHERE notesID = ?",[postID])
          await pool.query("INSERT INTO notes_likes (user_id,notesID) VALUES(?,?)",[userID,postID]);
-        let isliked = true;
+         const [likes] = await pool.query("SELECT like_count FROM notes WHERE notesID = ?",[postID]);
+         const likeCount = likes[0].like_count;
+
+         return res.json({
+            isliked:true,
+            message:"user has liked",
+            data:likes,
+         })
     } else {
+
         console.log("ig user has already liked it now disliking")
         await pool.query("DELETE FROM notes_likes WHERE user_id = ? AND notesID = ?",[userID,postID])
         await pool.query("UPDATE notes SET like_count = like_count - 1 WHERE notesID = ?",[postID])
-        let isliked = false;
+       
+        const [likes] = await pool.query("SELECT like_count FROM notes WHERE notesID = ?",[postID]);
+        const likeCount = likes[0].like_count;
+
+        
+        return res.json({
+            isliked:false,
+            message:"user has disliked",
+            data:likes,
+         })
     }
 
-    res.redirect("/Dashboard")
+    // res.redirect("/Dashboard")
 }
 
 

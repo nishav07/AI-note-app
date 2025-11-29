@@ -174,19 +174,19 @@ function likebtn() {
     const data = await res.json();
     console.log("data", data);
 
-    // if (icon) {
-    //   if (data.isliked === true) {
-    //     // user ne abhi LIKE kiya
-    //     icon.classList.add("text-red-500");
-    //     icon.classList.remove("fa-regular");
-    //     icon.classList.add("fa-solid");
-    //   } else {
-    //     // user ne abhi UNLIKE kiya
-    //     icon.classList.remove("text-red-500");
-    //     icon.classList.remove("fa-solid");
-    //     icon.classList.add("fa-regular");
-    //   }
-    // }
+    if (icon) {
+      if (data.isliked === true) {
+        // user ne abhi LIKE kiya
+        icon.classList.add("text-red-500");
+        icon.classList.remove("fa-regular");
+        icon.classList.add("fa-solid");
+      } else {
+        // user ne abhi UNLIKE kiya
+        icon.classList.remove("text-red-500");
+        icon.classList.remove("fa-solid");
+        icon.classList.add("fa-regular");
+      }
+    }
 
 
     if (countSpan) {

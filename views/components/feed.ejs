@@ -12,8 +12,20 @@
                     <h1 class="font-mono font-black text-2xl"><%= post.title %></h1>
                     <p class="font-normal text-xl text-gray-600"><%= post.content %></p>
                     <div class="flex gap-8" id="icon">
-                        <button data-like-btn class="font-mono text-xl font-normal" data-postid="<%= post.notesID%>" data-userid="<%= user.user_id %>"><i class="fa-regular fa-heart" data-like-icon></i><%= post.like_count %> Likes</button>
-                        <button id="cbtn" class="font-mono text-xl font-normal" data-type="comments"><i class="fa-regular fa-comment"></i>0 Comments</button>
+
+                    <button data-like-btn class="font-mono text-xl font-normal" data-postid="<%= post.notesID%>" data-userid="<%= user.user_id %>">
+                    <% if(post.liked) { %>
+                    
+                        <i class="fa-solid fa-heart text-red-500" data-like-icon></i>
+                    <% } else { %>
+                        
+                        <i class="fa-regular fa-heart" data-like-icon></i>
+                    <% } %>
+                    <span data-like-count><%= post.like_count %></span>
+                    </button>
+
+
+                    <button id="cbtn" class="font-mono text-xl font-normal" data-type="comments"><i class="fa-regular fa-comment"></i>0 Comments</button>
                 </div>
                 </div>
                   <% } %>

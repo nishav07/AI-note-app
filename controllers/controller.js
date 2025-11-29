@@ -123,10 +123,21 @@ async function SPA(req,res){
     const page = req.params.page;
     const [rows] = await pool.query("SELECT title,content,notesID,like_count FROM notes");
     const user = req.session.user;
+    const [likes] = await pool.query("SELECT * FROM notes_likes WHERE user_id = ?",[user.user_id]);
+
+    const userLikes = likes.map((like) => {
+        return like.notesID;
+    })
+
+    const postWithLike = rows.map(post => ({
+        ...post,
+        liked: userLikes.includes(post.notesID)
+    }));
+
     res.render(`components/${page}`,{ 
-        data:rows,
-        user:user 
-    });
+        data:postWithLike,
+        user:user
+    })
 }
 
 async function profileSPA(req,res){

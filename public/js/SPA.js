@@ -150,37 +150,69 @@ document.addEventListener("click", (e) => {
 
 //------------------------ likes & commnet mechnaismssnwfjd,-----------------------------
 
- function likebtn(){
-  document.addEventListener('click', async(e) => {
-    if(e.target.closest("[data-like-btn]")){
-      const btn = e.target.closest("[data-like-btn]");
-      const postID = btn.dataset.postid;
-      const userID = btn.dataset.userid;
-      const icon = btn.querySelector("[data-like-icon]");
-      // console.log({
-      //   postID,
-      //   userID
-      // })
+//  function likebtn(){
+//   document.addEventListener('click', async(e) => {
+//     if(e.target.closest("[data-like-btn]")){
+//       const btn = e.target.closest("[data-like-btn]");
+//       const postID = btn.dataset.postid;
+//       const userID = btn.dataset.userid;
+//       const icon = btn.querySelector("[data-like-icon]");
+//       // console.log({
+//       //   postID,
+//       //   userID
+//       // })
+//       if(icon){
+//         icon.classList.toggle("text-red-500");
+//       icon.classList.toggle("fa-solid");
+//       icon.classList.toggle("fa-regular");
+//       }
+      
 
+//     }
+
+//  const btn = e.target.closest("[data-like-btn]");
+
+//    const res =  await fetch("/likes", {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify({ postID, userID })
+//     });
+    
+//     const data = await res.json();
+//     console.log("data",data);
+
+//     btn.innerText = `Likes ${data.likeCount}`;
+//   })
+
+// }
+
+
+function likebtn() {
+  document.addEventListener('click', async (e) => {
+    const btn = e.target.closest("[data-like-btn]");
+    if (!btn) return;
+
+    const postID = btn.dataset.postid;
+    const userID = btn.dataset.userid;
+    const icon = btn.querySelector("[data-like-icon]");
+
+    if (icon) {
       icon.classList.toggle("text-red-500");
       icon.classList.toggle("fa-solid");
       icon.classList.toggle("fa-regular");
-
     }
- const btn = e.target.closest("[data-like-btn]");
-      const postID = btn.dataset.postid;
-      const userID = btn.dataset.userid;
 
-   const res =  await fetch("/likes", {
+    const res = await fetch("/likes", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ postID, userID })
     });
-    
-    const data = res.json();
-    console.log(data);
 
-    btn.innerText = `Likes ${data.like_count}`;
-  })
+    const data = await res.json();
+    console.log("data", data);
 
+
+    btn.innerText = data.data;
+
+  });
 }

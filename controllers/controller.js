@@ -121,7 +121,7 @@ async function post_login (req,res){
 
 async function SPA(req,res){
     const page = req.params.page;
-    const [rows] = await pool.query("SELECT title,content,notesID FROM notes");
+    const [rows] = await pool.query("SELECT title,content,notesID,like_count FROM notes");
     const user = req.session.user;
     res.render(`components/${page}`,{ 
         data:rows,

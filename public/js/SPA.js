@@ -177,6 +177,32 @@ function likebtn() {
 
 
 
+function cmtBtn(){
+  document.addEventListener('click', (e) => {
+    if(!e.target.classList.contains("cmt-btn")) return;
+    const btn = e.target.closest('[data-cmt-btn]')
+    const postID = btn.dataset.postid;
+    const userID = btn.dataset.userid;
+
+    console.log({
+      userID,
+      postID
+    })
+
+    if(!e.target.classList.contains("cmt-input")) return;
+
+    const sendbtn = e.target.closest("[data-send-btn]");
+
+    sendbtn.addEventListener("click", (e) => {
+      const input = e.target.closest("[data-cmt-input]");
+      const inval = input.value;
+      console.log("input value:" , inputValue);
+      input.innerText = "";
+    })
+
+  })
+}
+
 
 
 //  function cmtBtn(){

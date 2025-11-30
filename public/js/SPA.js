@@ -30,6 +30,7 @@ function initPage(page) {
     // initFeedPage();
     // initCommnetSec();
     likebtn();
+    cmtBtn();
   } else if (page === "write") {
     initNotesPage();
   } else if (page === "explore") {
@@ -83,7 +84,6 @@ document.addEventListener("click", (e) => {
 if (!btn) return;
 
 const page = btn.dataset.type;
-
 loadComments(page);
 })
 
@@ -176,6 +176,39 @@ function likebtn() {
 }
 
 
-function cmtBtn(){
-  
-}
+
+
+
+//  function cmtBtn(){
+//   document.addEventListener("click", async(e) => {
+//     const btn = e.target.closest("[data-cmt-btn]");
+//     if (!btn) return;
+
+//     const Btn = e.target.closest("[data-cmt]");
+
+//     if(!Btn) return;
+
+//     const sendBtn = Btn.querySelector("[data-cmt-send]")
+//    if(!sendBtn) return
+
+//    sendBtn.addEventListener("clickc",async(e) => {
+//     const btn = e.target.closest("[data-cmt-btn]");
+//      const postID = btn.dataset.postid;
+//     const userID = btn.dataset.userid;
+//     console.log("before");
+//     const input = btn.querySelector("[data-cmt-input]");
+//     console.log('after');
+//     console.log(input.value)
+//      const res = await fetch("/comments", {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify({ postID, userID })
+//     })
+//    })
+// })
+// }
+
+
+// function cmtbox2(postID,userID,inputVALUE){
+
+// }

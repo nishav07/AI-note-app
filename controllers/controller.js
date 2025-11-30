@@ -156,14 +156,11 @@ async function edit(req,res) {
     res.render("edit.ejs")
 }
 
-async function comments(req,res){
+async function commentSPA(req,res){
     const page = req.params.page;
-    const [rows] = await pool.query("SELECT title,content,notesID,like_count FROM notes");
-    const user = req.session.user;
-    res.render(`components3/${page}`, {
-        data:rows,
-        user:user
-    });
+    // const [rows] = await pool.query("SELECT title,content,notesID,like_count FROM notes");
+    // const user = req.session.user;
+    res.render(`components3/${page}`);
 }
 
 async function likes(req,res){
@@ -208,6 +205,15 @@ async function likes(req,res){
 }
 
 
+async function comments(req,res){
+    const { postID, userID } = req.body;
+    console.log("backend pe data aa gya", {
+        postID,
+        userID
+    })
+}
+
+
 module.exports = {
     send,
     notesData,
@@ -220,6 +226,7 @@ module.exports = {
     SPA,
     edit,
     profileSPA,
-    comments,
-    likes
+    commentSPA,
+    likes,
+    comments
 }

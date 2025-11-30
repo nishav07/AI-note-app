@@ -174,3 +174,8 @@ function likebtn() {
     }
   });
 }
+
+
+function cmtBtn(){
+  
+}

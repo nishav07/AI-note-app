@@ -158,7 +158,12 @@ async function edit(req,res) {
 
 async function comments(req,res){
     const page = req.params.page;
-    res.render(`components3/${page}`);
+    const [rows] = await pool.query("SELECT title,content,notesID,like_count FROM notes");
+    const user = req.session.user;
+    res.render(`components3/${page}`, {
+        data:rows,
+        user:user
+    });
 }
 
 async function likes(req,res){

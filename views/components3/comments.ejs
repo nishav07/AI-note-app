@@ -1,2 +1,25 @@
-<h1 class="font-mono text-2xl font-black">Comments</h1>
-<button data-type="default">back</button>
+<button data-type="default" class="w-20 -ml-8 text-3xl"><i class="fa-solid fa-caret-left"></i></button>
+                      <h1 class="font-mono text-2xl text-black">Comments</h1>
+                      <div class="h-full w-full">
+
+                        <div id="c-feild" class="w-full mb-4 h-80 shadow-xl-b p-2 overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                           <div id="cmt-card" class="h-auto w-full p-2 rounded-sm shadow-xl flex flex-col items-center justify-center gap-2">
+                            <div class="flex items-center h-12 w-full gap-2">
+                                <div id="logo" class="h-10 w-10 rounded-full bg-black"></div>
+                                <div id="username" class="text-sm">@nishav07</div>
+                            </div>
+                            <div class="h-auto w-full">
+                                <p class="text-sm">nice</p>
+                            </div>
+                           </div>
+                        </div>
+
+                        <div id="c-input" class="w-full h-30 text-black flex justify-center items-center bg-white shadow-xl ">
+                            <textarea
+                            name="comment"
+                            placeholder="write your opinion"
+                            class="min-h-[7rem] w-full p-4 rounded-lg resize-none outline-none overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                            ></textarea>
+                            <i data-type="comment" class="fa-solid fa-arrow-up text-3xl"></i>
+                        </div>
+                      </div>

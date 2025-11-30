@@ -76,14 +76,7 @@ function initNotesPage() {
 
 //-------------- comment secion logic----------------------------------------------------------------------
 
-// function initcbtn(){
-//   document.addEventListener('click' , (e) => {
-//   if(e.target.matches("#cbtn")){
-//     const section = e.target.closest("#extraFeatures").querySelector("#cdisplay");
-//     section.classList.toggle("hidden");
-//   }
-// })
-// }
+
 
 document.addEventListener("click", (e) => {
  const btn = e.target.closest("button[data-type]");
@@ -100,17 +93,8 @@ function loadComments(page) {
     .then(html => {
       document.getElementById("cdisplay").innerHTML = html;
     });
-    // initCommnetSec();
+    
 }
-
-// function initCommnetSec(){
-//   const x = document.querySelector("#cbtn");
-//   const y = document.querySelector("#cdisplay")
-// x.addEventListener("click", () => {
-//   console.log("btn clciked fromx x")
-//   y.classList.toggle("hidden");
-// })
-// }
 
 //----------------------------------------------------------------------------------------------------------------
 
@@ -128,9 +112,7 @@ function loadProfilePage(page) {
     });
 }
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   loadProfilePage("post");
-// });
+
 
 document.addEventListener("click", (e) => {
   if (!e.target.matches("a[data-profile]")) return;
@@ -176,12 +158,10 @@ function likebtn() {
 
     if (icon) {
       if (data.isliked === true) {
-        // user ne abhi LIKE kiya
         icon.classList.add("text-red-500");
         icon.classList.remove("fa-regular");
         icon.classList.add("fa-solid");
       } else {
-        // user ne abhi UNLIKE kiya
         icon.classList.remove("text-red-500");
         icon.classList.remove("fa-solid");
         icon.classList.add("fa-regular");

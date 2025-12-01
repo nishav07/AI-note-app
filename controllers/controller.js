@@ -162,12 +162,10 @@ async function commentSPA(req,res){
         postID,
         userID,
     })
-
-    const [rows] = await pool.query('SELECT * FROM notes_comment WHERE notesID = ?',[postID]);
-    // const [user] = await pool.query('SELECT * FROM')
-    console.log("comments of specific post",rows);
+    const [user] = await pool.query('SELECT * FROM notes_comment as a JOIN users as b ON a.user_id = b.user_id WHERE notesID = ?',[postID]);
+    console.log("comments of specific post",user);
     res.render(`components3/${page}`,{
-        data:rows
+        data:user,
     });
 }
 

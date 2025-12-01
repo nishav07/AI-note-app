@@ -5,15 +5,17 @@
                         <div id="c-feild" class="w-full mb-4 h-80 shadow-xl-b p-2 overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                             <% for (let post of data) { %>
                            <div id="cmt-card" class="h-auto w-full p-2 rounded-sm shadow-xl flex flex-col items-center justify-center gap-4">
-                            <div class="flex items-center justify-center h-12 w-full gap-2">
+                            <div class="flex items-center  h-12 w-full gap-2">
                                 <div id="logo" class="h-10 w-10 rounded-full bg-black"></div>
-                                <div id="username" class="text-sm">@nishav07<%= post.user_id %></div>
+                                
+                                <div id="username" class="text-sm"><%= post.username %></div>
                             </div>
                             <div class="h-auto w-full">
                                 <p class="text-sm"><%= post.content %></p>
                             </div>
                            </div>
                            <% } %>
+
                         </div>
 
                         <div id="c-input" data-cmt class="w-full h-30 text-black flex justify-center items-center bg-white shadow-xl cmt-input">

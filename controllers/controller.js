@@ -157,10 +157,18 @@ async function edit(req,res) {
 }
 
 async function commentSPA(req,res){
-    const page = req.params.page;
-    // const [rows] = await pool.query("SELECT title,content,notesID,like_count FROM notes");
-    // const user = req.session.user;
-    res.render(`components3/${page}`);
+    const { postID, userID,page} = req.body;
+    console.log("commet SPA pe data aa gya", {
+        postID,
+        userID,
+    })
+
+    const [rows] = await pool.query('SELECT * FROM notes_comment WHERE notesID = ?',[postID]);
+    // const [user] = await pool.query('SELECT * FROM')
+    console.log("comments of specific post",rows);
+    res.render(`components3/${page}`,{
+        data:rows
+    });
 }
 
 async function likes(req,res){
@@ -213,6 +221,7 @@ async function comments(req,res){
         comment
     })
 
+    await pool.query("INSERT INTO notes_comment (user_id,notesID,content) VALUES(?,?,?)",[userID,postID,comment]);
     res.send('comments aa gya');
 }
 

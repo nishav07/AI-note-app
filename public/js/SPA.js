@@ -79,22 +79,39 @@ function initNotesPage() {
 
 
 
-document.addEventListener("click", (e) => {
+document.addEventListener("click", async(e) => {
  const btn = e.target.closest("button[data-type]");
 if (!btn) return;
 
 const page = btn.dataset.type;
-loadComments(page);
+const postID = btn.dataset.postid;
+const userID = btn.dataset.userid;
+
+console.log(postID);
+// loadComments(page);
+const res = await fetch(`/Dashboard/${page}`,{
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({
+        postID:postID,
+        userID:userID,
+        page:page
+      })
+    })
+
+    const data = await res.text();
+    document.getElementById("cdisplay").innerHTML = data;
 })
 
-function loadComments(page) {
-  fetch(`/Dashboard/${page}`)
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("cdisplay").innerHTML = html;
-    });
+
+// function loadComments(page) {
+//   fetch(`/Dashboard/${page}`)
+//     .then(res => res.text())
+//     .then(html => {
+//       document.getElementById("cdisplay").innerHTML = html;
+//     });
     
-}
+// }
 
 //----------------------------------------------------------------------------------------------------------------
 
@@ -217,10 +234,10 @@ function cmtBtn() {
       })
     })
 
-    const data = await res.json();
+    const data = (await res).text();
     console.log("data",data)
     }
-    
+
   })
 }
 

@@ -206,11 +206,14 @@ async function likes(req,res){
 
 
 async function comments(req,res){
-    const { postID, userID } = req.body;
+    const { postID, userID, comment } = req.body;
     console.log("backend pe data aa gya", {
         postID,
-        userID
+        userID,
+        comment
     })
+
+    res.send('comments aa gya');
 }
 
 

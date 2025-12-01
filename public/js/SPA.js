@@ -175,66 +175,52 @@ function likebtn() {
   });
 }
 
+//------------------------------------------- comments--------------------------------------------------------
+
+let curr_post_id = null;
+let curr_user_id = null;
+
+function cmtBtn() {
+  document.addEventListener("click", async(e) => {
+
+    if (e.target.closest(".cmt-btn")) {
+      const btn = e.target.closest(".cmt-btn");
+
+      curr_post_id = btn.dataset.postid;
+      curr_user_id = btn.dataset.userid;
+
+      console.log("COMMENT BTN CLICK:", { curr_post_id, curr_user_id });
+
+    }
 
 
-function cmtBtn(){
-  document.addEventListener('click', (e) => {
-    if(!e.target.classList.contains("cmt-btn")) return;
-    const btn = e.target.closest('[data-cmt-btn]')
-    const postID = btn.dataset.postid;
-    const userID = btn.dataset.userid;
+    if (e.target.closest("[data-send-btn]")) {
+      const sendBtn = e.target.closest("[data-send-btn]");
+      const wrapper = sendBtn.closest("#c-input");
+      const input = wrapper.querySelector("[data-cmt-input]");
 
-    console.log({
-      userID,
-      postID
+      const value = input.value.trim();
+
+      console.log("INPUT VALUE:", value);
+
+      if (value === "") return console.log("Empty comment");
+
+      input.value = "";
+
+      const res = fetch("/comments",{
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({
+        postID:curr_post_id,
+        userID:curr_user_id,
+        comment:value
+      })
     })
 
-    if(!e.target.classList.contains("cmt-input")) return;
-
-    const sendbtn = e.target.closest("[data-send-btn]");
-
-    sendbtn.addEventListener("click", (e) => {
-      const input = e.target.closest("[data-cmt-input]");
-      const inval = input.value;
-      console.log("input value:" , inputValue);
-      input.innerText = "";
-    })
-
+    const data = await res.json();
+    console.log("data",data)
+    }
+    
   })
 }
 
-
-
-//  function cmtBtn(){
-//   document.addEventListener("click", async(e) => {
-//     const btn = e.target.closest("[data-cmt-btn]");
-//     if (!btn) return;
-
-//     const Btn = e.target.closest("[data-cmt]");
-
-//     if(!Btn) return;
-
-//     const sendBtn = Btn.querySelector("[data-cmt-send]")
-//    if(!sendBtn) return
-
-//    sendBtn.addEventListener("clickc",async(e) => {
-//     const btn = e.target.closest("[data-cmt-btn]");
-//      const postID = btn.dataset.postid;
-//     const userID = btn.dataset.userid;
-//     console.log("before");
-//     const input = btn.querySelector("[data-cmt-input]");
-//     console.log('after');
-//     console.log(input.value)
-//      const res = await fetch("/comments", {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify({ postID, userID })
-//     })
-//    })
-// })
-// }
-
-
-// function cmtbox2(postID,userID,inputVALUE){
-
-// }

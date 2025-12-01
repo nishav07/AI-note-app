@@ -133,7 +133,6 @@ function loadProfilePage(page) {
 
 document.addEventListener("click", (e) => {
   if (!e.target.matches("a[data-profile]")) return;
-
   e.preventDefault();
 
   

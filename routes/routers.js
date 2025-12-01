@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const micro = require("../controllers/controller")
-const { isLoggedIn } = require("../middleware/middleware.js")
+const micro = require("../controllers/controller");
+const { isLoggedIn } = require("../middleware/middleware.js");
 
 
 

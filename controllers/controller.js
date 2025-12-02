@@ -113,10 +113,12 @@ async function SPA(req,res){
     const [rows] = await pool.query("SELECT title,content,notesID,like_count FROM notes");
     const user = req.session.user;
     const [likes] = await pool.query("SELECT * FROM notes_likes WHERE user_id = ?",[user.user_id]);
-
+    const [drafts] = await pool.query("SELECT * FROM draft_notes as a JOIN users as b ON a.userid = b.user_id; WHERE user_id = ?",[user.user_id]);
     const userLikes = likes.map((like) => {
         return like.notesID;
     })
+
+    console.log("drafts:",drafts)
 
     const postWithLike = rows.map(post => ({
         ...post,
@@ -125,7 +127,8 @@ async function SPA(req,res){
 
     res.render(`components/${page}`,{ 
         data:postWithLike,
-        user:user
+        user:user,
+        draft:drafts
     })
 }
 

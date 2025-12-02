@@ -1,1 +1,33 @@
-<h1>draftss</h1>
+<div id="mainFeed" class="h-140 w-4/5 shadow-sm">
+            <div id="feed" class="h-full w-full flex flex-col gap-8 overflow-y-hidden overflow-y-scroll hide">
+                <% for (let post of draft) { %>
+                <div id="posts" class="w-full h-auto p-4 flex flex-col justify-start items-start gap-4 shadow-xl">
+                    <div class="h-12 w-full flex justify-between items-center">
+                        <div id="user-details" class="flex gap-4 items-center">
+                        <div id="logo" class="h-10 w-10 rounded-full bg-black"></div>
+                        <h1 class=" font-mono font-black text-xl">Nishav</h1>
+                        </div>
+                        <a href="#" class="font-black text-2xl"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                    </div>
+                    <h1 class="font-mono font-black text-2xl"><%= post.title %></h1>
+                    <p class="font-normal text-xl text-gray-600"><%= post.content %></p>
+                    <div class="flex gap-8" id="icon">
+
+                    <button data-like-btn class="font-mono text-xl font-normal" data-postid="<%= post.notesID%>" data-userid="<%= user.userid %>">
+                    <% if(post.liked) { %>
+                    
+                        <i class="fa-solid fa-heart text-red-500" data-like-icon></i>
+                    <% } else { %>
+                        
+                        <i class="fa-regular fa-heart" data-like-icon></i>
+                    <% } %>
+                    <span data-like-count><%= post.like_count %></span>
+                    </button>
+
+
+                    <button id="cbtn" class="font-mono text-xl font-normal cmt-btn" data-postid="<%= post.notesID%>" data-userid="<%= user.user_id %>" data-type="comments" data-cmt-btn><i class="fa-regular fa-comment"></i>0 Comments</button>
+                </div>
+                </div>
+                  <% } %>
+            </div>
+        </div>

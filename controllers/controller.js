@@ -113,7 +113,7 @@ async function SPA(req,res){
     const [rows] = await pool.query("SELECT title,content,notesID,like_count FROM notes");
     const user = req.session.user;
     const [likes] = await pool.query("SELECT * FROM notes_likes WHERE user_id = ?",[user.user_id]);
-    const [drafts] = await pool.query("SELECT * FROM draft_notes as a JOIN users as b ON a.userid = b.user_id; WHERE user_id = ?",[user.user_id]);
+    const [drafts] = await pool.query("SELECT * FROM draft_notes as a JOIN users as b ON a.userid = b.user_id WHERE b.user_id = ?",[user.user_id]);
     const userLikes = likes.map((like) => {
         return like.notesID;
     })

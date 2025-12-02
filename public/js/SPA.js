@@ -69,8 +69,24 @@ function initNotesPage() {
 
   
 
-  draftBtn?.addEventListener("click", () => {
-    console.log("draft button clicked");
+  draftBtn?.addEventListener("click", async () => {
+    console.log('helllo draft btnnn');
+    let validity = myform.checkValidity();
+    if (!validity) {
+      myform.reportValidity();
+      return;
+    }
+
+    let form = new FormData(myform);
+    const { title, story } = Object.fromEntries(form.entries());
+
+    await fetch("/drafts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, story })
+    });
+
+    window.location.href = "/Dashboard";
   });
 }
 
@@ -78,7 +94,7 @@ function initNotesPage() {
 //-------------- comment secion logic----------------------------------------------------------------------
 
 
-
+  
 document.addEventListener("click", async(e) => {
  const btn = e.target.closest("button[data-type]");
 if (!btn) return;
@@ -88,7 +104,7 @@ const postID = btn.dataset.postid;
 const userID = btn.dataset.userid;
 
 console.log(postID);
-// loadComments(page);
+
 const res = await fetch(`/Dashboard/${page}`,{
       method: "POST",
       headers: {"Content-Type":"application/json"},
@@ -231,6 +247,7 @@ function cmtBtn() {
         userID:curr_user_id,
         comment:value
       })
+
     })
 
     const data = (await res).text();

@@ -3,20 +3,15 @@ const {pool} = require("../config/db");
 const bcrypt = require("bcrypt");
 const middlewares = require("../middleware/middleware");
 
-
 function send(req,res){
     res.render("index.ejs")
 }
-
 
 async function home(req,res){
     const [rows] = await pool.query("SELECT title,content FROM notes");
     console.log("initialdata",[rows]);
     res.render("home.ejs");//{data:rows}
 }
-
-
-
 
 async function notesData(req,res){
     const title = req.body.title;
@@ -34,9 +29,6 @@ async function notesData(req,res){
         res.status(500).send("Database error");  
     }
 }
-
-
-
 
 
 // function newNotes(req,res){
@@ -58,7 +50,6 @@ async function post_signup (req,res){
     console.log([username,email,password,hashPass]);
 
     
-
     try{
         await pool.query("INSERT INTO users (username,email,password) VALUES(?,?,?)",[username,email,hashPass]);
         console.log("hello form signup db");
@@ -80,7 +71,6 @@ async function post_login (req,res){
         password
     })
     
-
     try {
         const [rows] = await pool.query("SELECT * FROM users WHERE username = ?",[username]);
         console.log(rows);
@@ -109,7 +99,6 @@ async function post_login (req,res){
     }
 
 }
-
 
 // function profile(req,res){
 //     res.render("profile.ejs")
@@ -224,6 +213,24 @@ async function comments(req,res){
 }
 
 
+async function draft(req,res) {
+    const title = req.body.title;
+    const content = req.body.story;
+    const {user_id} = req.session.user;
+    console.log("drafts backends se console pe print")
+    console.log(req.session.user);
+    console.log(user_id);
+    console.log({title,content})
+    try {
+        await pool.query("INSERT INTO draft_notes (title,content,userid) VALUES(?,?,?)",[title,content,user_id])
+        console.log("hello form draft db")
+        res.redirect("/Dashboard")
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Database error");  
+    }
+}
+
 module.exports = {
     send,
     notesData,
@@ -238,5 +245,6 @@ module.exports = {
     profileSPA,
     commentSPA,
     likes,
-    comments
+    comments,
+    draft
 }

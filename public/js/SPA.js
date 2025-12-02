@@ -225,6 +225,11 @@ function cmtBtn() {
 
     }
 
+    // const btn = e.target.closest("[data-cmt-btn]");
+    // // const icon = btn.querySelector("[data-like-icon]");
+    // const countSpan = btn.querySelector("[data-cmt-count]");
+
+
 
     if (e.target.closest("[data-send-btn]")) {
       const sendBtn = e.target.closest("[data-send-btn]");
@@ -250,8 +255,19 @@ function cmtBtn() {
 
     })
 
-    const data = (await res).text();
-    console.log("data",data)
+     const data = await res.json();
+    console.log("cmt_data", data);
+
+    const btn = e.target.closest("[data-cmt-btn]");
+    if(!btn) return;
+
+    const countSpan = btn.querySelector("[data-cmt-count]");
+
+
+    if (countSpan) {
+      countSpan.innerText = data.data;
+    }
+
     }
 
   })

@@ -212,7 +212,14 @@ async function comments(req,res){
     })
 
     await pool.query("INSERT INTO notes_comment (user_id,notesID,content) VALUES(?,?,?)",[userID,postID,comment]);
-    res.send('comments aa gya');
+    await pool.query("UPDATE notes SET cmt_count = cmt_count + 1 WHERE notesID = ?",[postID])
+    const [cmt] = await pool.query("SELECT cmt_count FROM notes WHERE notesID = ?",[postID]);
+         const cmtCount = cmt[0].cmt_count;
+
+         return res.json({
+            data:cmtCount,
+         })
+         
 }
 
 

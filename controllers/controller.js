@@ -110,7 +110,7 @@ async function post_login (req,res){
 
 async function SPA(req,res){
     const page = req.params.page;
-    const [rows] = await pool.query("SELECT * FROM notes");
+    const [rows] = await pool.query("SELECT * FROM notes as a JOIN users as b ON a.user_id = b.user_id");
     const user = req.session.user;
     const [likes] = await pool.query("SELECT * FROM notes_likes WHERE user_id = ?",[user.user_id]);
     const [drafts] = await pool.query("SELECT * FROM draft_notes as a JOIN users as b ON a.userid = b.user_id WHERE b.user_id = ?",[user.user_id]);

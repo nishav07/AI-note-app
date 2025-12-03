@@ -3,19 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>edit page</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-     <main class="h-screen w-full flex flex-col justify-center items-center text-black">
-        <form action="/" class="p-8 h-auto w-120 border-2  flex flex-col justify-center items-center gap-8 rounded-lg" method="post">
-            <h2 class="font-mono text-2xl font-black">Login into the sea of stories :D</h2>
-            <input class="h-12 w-full border-grey-400 border-b-2 bg-stone-100 p-4 outline-none rounded-t-lg font-medium" type="text" placeholder="Username" name="username" readonly>
-            <input class="h-12 w-full border-grey-400 border-b-2 bg-stone-100 p-4 outline-none rounded-t-lg font-medium" type="password" name="password" placeholder="******" readonly>
-            <input class="h-12 w-full border-grey-400 border-b-2 bg-stone-100 p-4 outline-none rounded-t-lg font-medium" type="email" placeholder="@xyz.com" name="email" readonly>
-            <textarea class="min-h-[16rem] w-5/6 border-gray-300 border-2 p-4 rounded-lg resize-none outline-none"
-            name="bio" placeholder="Write your Bio...." required></textarea>
-            <button class="h-12 w-32 bg-black font-medium text-xl text-white p-2 rounded-full" type="submit">Change</button>
-        </form>
-    </main>
+    <div class="h-full w-full flex">
+
+  <!-- LEFT - SETTINGS SIDEBAR -->
+  <div class="w-1/4 h-full border-r p-6 flex flex-col gap-4 bg-gray-50">
+
+    <button class="profile-tab text-left p-3 bg-gray-200 rounded-lg" data-tab="general">
+      General Info
+    </button>
+
+    <button class="profile-tab text-left p-3 bg-gray-100 rounded-lg" data-tab="personal">
+      Personal Info
+    </button>
+
+    <button class="profile-tab text-left p-3 bg-gray-100 rounded-lg" data-tab="social">
+      Social Links
+    </button>
+
+    <button class="profile-tab text-left p-3 bg-gray-100 rounded-lg" data-tab="profilePic">
+      Profile Photo
+    </button>
+
+  </div>
+
+  <!-- RIGHT - EDIT CONTENT -->
+  <div class="flex-1 p-8 overflow-y-scroll hide">
+
+    <!-- Username / Email (view only) -->
+    <div id="general" class="tab-content flex flex-col gap-6">
+
+      <h2 class="text-2xl font-mono">Account Info (Read Only)</h2>
+
+      <div>
+        <label class="block text-gray-500">Username</label>
+        <input type="text" value="Nishav" disabled 
+        class="w-full bg-gray-200 p-3 rounded-lg outline-none" />
+      </div>
+
+      <div>
+        <label class="block text-gray-500">Email</label>
+        <input type="email" value="nishav@email.com" disabled 
+        class="w-full bg-gray-200 p-3 rounded-lg outline-none" />
+      </div>
+
+    </div>
+
+    <!-- Personal Info -->
+    <div id="personal" class="tab-content hidden flex flex-col gap-6">
+
+      <h2 class="text-2xl font-mono">Personal Info</h2>
+
+      <div>
+        <label>Name</label>
+        <input type="text" placeholder="Your name" 
+        class="w-full border p-3 rounded-lg outline-none" />
+      </div>
+
+      <div>
+        <label>Bio</label>
+        <textarea placeholder="Write bio..." 
+        class="w-full border p-3 rounded-lg outline-none h-24"></textarea>
+      </div>
+
+      <div>
+        <label>Location</label>
+        <input type="text" placeholder="Your location"
+        class="w-full border p-3 rounded-lg outline-none" />
+      </div>
+
+      <div>
+        <label>Date of Birth</label>
+        <input type="date"
+        class="w-full border p-3 rounded-lg outline-none" />
+      </div>
+
+      <div>
+        <label>Gender</label>
+        <select class="w-full border p-3 rounded-lg outline-none">
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <button class="bg-black text-white p-3 rounded-lg mt-2">
+        Save Changes
+      </button>
+
+    </div>
+
+    <!-- Social Links -->
+    <div id="social" class="tab-content hidden flex flex-col gap-6">
+
+      <h2 class="text-2xl font-mono">Social Links</h2>
+
+      <div>
+        <label>Website</label>
+        <input type="text" placeholder="https://"
+        class="w-full border p-3 rounded-lg outline-none" />
+      </div>
+
+      <div>
+        <label>Instagram</label>
+        <input type="text" placeholder="@username"
+        class="w-full border p-3 rounded-lg outline-none" />
+      </div>
+
+      <div>
+        <label>Twitter (X)</label>
+        <input type="text" placeholder="@username"
+        class="w-full border p-3 rounded-lg outline-none" />
+      </div>
+
+      <button class="bg-black text-white p-3 rounded-lg">
+        Save Links
+      </button>
+
+    </div>
+
+    <!-- Profile Photo -->
+    <div id="profilePic" class="tab-content hidden flex flex-col gap-6">
+
+      <h2 class="text-2xl font-mono">Profile Picture</h2>
+
+      <div class="flex items-center gap-6">
+        <img src="https://via.placeholder.com/150" 
+        class="h-32 w-32 rounded-full object-cover border" />
+
+        <input type="file"
+        class="border rounded-lg p-2 w-full"/>
+      </div>
+
+      <button class="bg-black text-white p-3 rounded-lg w-fit">
+        Update Photo
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="/js/edit.js"></script>
 </body>
 </html>

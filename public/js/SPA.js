@@ -170,7 +170,7 @@ function likebtn() {
     if (!btn) return;
 
     btn.disabled = true;
-    setTimeout(() => btn.disabled = false, 300);
+    setTimeout(() => btn.disabled = false, 500);
 
     const postID = btn.dataset.postid;
     const userID = btn.dataset.userid;
@@ -258,16 +258,16 @@ function cmtBtn() {
      const data = await res.json();
     console.log("cmt_data", data);
 
-    const btn = e.target.closest("[data-cmt-btn]");
-    if(!btn) return;
+    // const btn = e.target.closest("[data-cmt-btn]");
+    // if(!btn) return;
 
-    const countSpan = btn.querySelector("[data-cmt-count]");
+    // const countSpan = btn.querySelector("[data-cmt-count]");
 
+    // console.log("data of comment count",data.data)
 
-    if (countSpan) {
-      countSpan.innerText = data.data;
-    }
-
+    // if (countSpan) {
+    //   countSpan.innerText = "";
+    // }
     }
 
   })

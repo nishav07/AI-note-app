@@ -33,12 +33,58 @@ function initPage(page) {
     cmtBtn();
   } else if (page === "write") {
     initNotesPage();
-  } else if (page === "explore") {
-    initExplorePage();
+  } else if (page === "profile") {
+    initEditPage();
   } else if (page === ""){
     initFeedPage();
   }
 }
+
+
+function initEditPage(){
+  const editbtn = document.querySelector(".editbtn")
+  editbtn.addEventListener('click', () => {
+    loadPage("edit")
+  })
+
+  document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("profile-tab")) {
+
+    document.querySelectorAll(".profile-tab").forEach(btn => {
+      btn.classList.remove("bg-gray-300");
+      btn.classList.add("bg-gray-100");
+    });
+
+    e.target.classList.add("bg-gray-300");
+
+    const tab = e.target.dataset.tab;
+
+    document.querySelectorAll(".tab-content").forEach(c => {
+      c.classList.add("hidden");
+    });
+
+    document.getElementById(tab).classList.remove("hidden");
+  }
+});
+}
+
+
+
+function initEditDataSender(){
+  const btn1 = document.querySelector('#personalInfo')
+  const userInfo = {};
+  btn1.addEventListener('click', () => {
+     document.querySelectorAll(".input").forEach(i => {
+      // userInfo.ap
+    });
+  })
+}
+
+
+
+
+
+
 
 function initNotesPage() {
   const publishBtn = document.getElementById("publishbtn");

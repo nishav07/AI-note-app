@@ -1,1 +1,134 @@
-<h1>edittttttttt</h1>
+<div class="h-full w-full flex">
+
+  <!-- LEFT - SETTINGS SIDEBAR -->
+  <div class="w-1/4 h-full border-r p-6 flex flex-col gap-4 bg-gray-50">
+
+    <button class="profile-tab text-left p-3 bg-gray-200 rounded-lg" data-tab="general">
+      General Info
+    </button>
+
+    <button class="profile-tab text-left p-3 bg-gray-100 rounded-lg" data-tab="personal">
+      Personal Info
+    </button>
+
+    <button class="profile-tab text-left p-3 bg-gray-100 rounded-lg" data-tab="social">
+      Social Links
+    </button>
+
+    <button class="profile-tab text-left p-3 bg-gray-100 rounded-lg" data-tab="profilePic">
+      Profile Photo
+    </button>
+
+  </div>
+
+  <div class="flex-1 p-8 overflow-y-scroll hide">
+
+    <div id="general" class="tab-content flex flex-col gap-6">
+
+      <h2 class="text-2xl font-mono">Account Info (Read Only)</h2>
+
+      <div>
+        <label class="block text-gray-500">Username</label>
+        <input type="text" value="<%= user.username %>" disabled 
+        class="w-full bg-gray-200 p-3 rounded-lg outline-none input" />
+      </div>
+
+      <div>
+        <label class="block text-gray-500">Email</label>
+        <input type="email" value="<%= user.email %>" disabled 
+        class="w-full bg-gray-200 p-3 rounded-lg outline-none input" />
+      </div>
+
+    </div>
+
+  
+    <div id="personal" class="tab-content hidden flex flex-col gap-6">
+
+      <h2 class="text-2xl font-mono">Personal Info</h2>
+
+      <div>
+        <label>Name</label>
+        <input type="text" placeholder="Your name" 
+        class="w-full border p-3 rounded-lg outline-none input" />
+      </div>
+
+      <div>
+        <label>Bio</label>
+        <textarea placeholder="Write bio..." 
+        class="w-full border p-3 rounded-lg outline-none h-24 input"></textarea>
+      </div>
+
+      <div>
+        <label>Location</label>
+        <input type="text" placeholder="Your location"
+        class="w-full border p-3 rounded-lg outline-none input" />
+      </div>
+
+      <div>
+        <label>Date of Birth</label>
+        <input type="date"
+        class="w-full border p-3 rounded-lg outline-none input" />
+      </div>
+
+      <div>
+        <label>Gender</label>
+        <select class="w-full border p-3 rounded-lg outline-none input">
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <button class="bg-black text-white p-3 rounded-lg mt-2" id="personalInfo">
+        Save Changes
+      </button>
+
+    </div>
+
+   
+    <div id="social" class="tab-content hidden flex flex-col gap-6">
+
+      <h2 class="text-2xl font-mono">Social Links</h2>
+
+      <div>
+        <label>Website</label>
+        <input type="text" placeholder="https://"
+        class="w-full border p-3 rounded-lg outline-none" />
+      </div>
+
+      <div>
+        <label>Instagram</label>
+        <input type="text" placeholder="@username"
+        class="w-full border p-3 rounded-lg outline-none" />
+      </div>
+
+      <div>
+        <label>Twitter (X)</label>
+        <input type="text" placeholder="@username"
+        class="w-full border p-3 rounded-lg outline-none" />
+      </div>
+
+      <button class="bg-black text-white p-3 rounded-lg">
+        Save Links
+      </button>
+
+    </div>
+
+    <div id="profilePic" class="tab-content hidden flex flex-col gap-6">
+
+      <h2 class="text-2xl font-mono">Profile Picture</h2>
+
+      <div class="flex items-center gap-6">
+        <img src="https://via.placeholder.com/150" 
+        class="h-32 w-32 rounded-full object-cover border" />
+
+        <input type="file"
+        class="border rounded-lg p-2 w-full"/>
+      </div>
+
+      <button class="bg-black text-white p-3 rounded-lg w-fit">
+        Update Photo
+      </button>
+    </div>
+  </div>
+</div>

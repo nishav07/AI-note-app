@@ -35,6 +35,7 @@ function initPage(page) {
     initNotesPage();
   } else if (page === "profile") {
     initEditPage();
+    initEditDataSender();
   } else if (page === ""){
     initFeedPage();
   }
@@ -72,12 +73,17 @@ function initEditPage(){
 
 function initEditDataSender(){
   const btn1 = document.querySelector('#personalInfo')
-  const userInfo = {};
+  let userInfo = {};
   btn1.addEventListener('click', () => {
      document.querySelectorAll(".input").forEach(i => {
-      // userInfo.ap
+      let name = i.name;
+      let value = i.value;
+      userInfo[name] = value;
     });
+
   })
+
+  console.log(userInfo);
 }
 
 

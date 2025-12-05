@@ -15,12 +15,13 @@ router.post("/signup",micro.post_signup);
 // router.get("/profile",isLoggedIn,micro.profile);
 // router.get("/explore",isLoggedIn,micro.explore);
 router.get("/components/:page",isLoggedIn,micro.SPA);
-router.get("/edit",isLoggedIn,micro.edit);
+// router.get("/edit",isLoggedIn,micro.edit);
 router.get("/profile/:page",isLoggedIn,micro.profileSPA);
 router.post("/Dashboard/:page",isLoggedIn,micro.commentSPA);
 router.post("/likes",isLoggedIn,micro.likes)
 router.post("/comments",isLoggedIn,micro.comments);
 router.post("/drafts",isLoggedIn,micro.draft);
+router.patch("/edit/:page",isLoggedIn,micro.edit);
 module.exports = router;
 
 

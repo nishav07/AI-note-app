@@ -35,7 +35,6 @@ function initPage(page) {
     initNotesPage();
   } else if (page === "profile") {
     initEditPage();
-    initEditDataSender();
   } else if (page === ""){
     initFeedPage();
   }
@@ -65,6 +64,10 @@ function initEditPage(){
     });
 
     document.getElementById(tab).classList.remove("hidden");
+
+    if(tab ==="personal"){
+      initEditDataSender();
+    }
   }
 });
 }
@@ -74,16 +77,23 @@ function initEditPage(){
 function initEditDataSender(){
   const btn1 = document.querySelector('#personalInfo')
   let userInfo = {};
-  btn1.addEventListener('click', () => {
+  btn1.addEventListener('click', async() => {
      document.querySelectorAll(".input").forEach(i => {
       let name = i.name;
       let value = i.value;
       userInfo[name] = value;
     });
 
+    console.log(userInfo);
+    const res = await fetch("/edit/personal",{
+      method: "PATCH",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({userInfo})
+    })
+
+    window.location.href = "/Dashboard";
   })
 
-  console.log(userInfo);
 }
 
 

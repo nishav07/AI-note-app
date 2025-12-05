@@ -144,9 +144,9 @@ async function profileSPA(req,res){
 
 
 
-async function edit(req,res) {
-    res.render("edit.ejs")
-}
+// async function edit(req,res) {
+//     res.render("edit.ejs")
+// }
 
 async function commentSPA(req,res){
     const { postID, userID,page} = req.body;
@@ -238,6 +238,17 @@ async function draft(req,res) {
     } catch (err) {
         console.error(err);
         res.status(500).send("Database error");  
+    }
+}
+
+
+async function edit(req,res) {
+    const page = req.params.page;
+    if(page === "personal"){
+        const {name,bio,location,dob,gender} = req.body.userInfo;
+
+        console.log('data from bckend:',{name,bio,location,dob,gender})
+        res.redirect("/dashboard")
     }
 }
 

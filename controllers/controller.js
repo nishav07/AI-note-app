@@ -244,11 +244,21 @@ async function draft(req,res) {
 
 async function edit(req,res) {
     const page = req.params.page;
+    const userID = req.session.user.user_id;
     if(page === "personal"){
-        const {name,bio,location,dob,gender} = req.body.userInfo;
-
-        console.log('data from bckend:',{name,bio,location,dob,gender})
-        res.sendStatus(200);
+        try{
+            const {name,bio,location,dob,gender} = req.body.userInfo;
+            // await pool.query("INSERT INTO users (name,bio,location,dob,gender) VALUES(?,?,?,?,?)",[name,bio,location,dob,gender]);
+            await pool.query(
+                "UPDATE users SET name = ?,bio = ?,location = ?,dob = ?,gender = ? WHERE user_id = ?",[name,bio,location,dob,gender,userID]
+            )
+            console.log('data from bckend:',{name,bio,location,dob,gender})
+            req.flash("Success" , "Profile Updated")
+            res.sendStatus(200);
+        }catch(err){
+            req.flash("failed" , "internal server problem")
+            res.sendStatus(500);
+        }
     }
 }
 

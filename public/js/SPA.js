@@ -77,16 +77,19 @@ function initEditPage(){
 
 function initEditDataSender(){
   const btn1 = document.querySelector('#personalInfo')
-  let userInfo = {};
   btn1.addEventListener('click', async() => {
+    let userInfo = {};
+    let valid = true;
      document.querySelectorAll(".input").forEach(i => {
       if(i.value === ""){
-        return alert('form badho pehle');
+         valid = false;
       }
       let name = i.name;
       let value = i.value;
       userInfo[name] = value;
     });
+
+    if(!valid) return alert('form bhado pehle');
 
     console.log(userInfo);
     const res = await fetch("/edit/personal",{

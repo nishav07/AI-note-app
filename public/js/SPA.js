@@ -13,8 +13,6 @@ document.addEventListener("DOMContentLoaded" , () => {
 });
 
 
-
-
 function loadPage(page) {
   fetch(`/components/${page}`)
     .then(res => res.text())
@@ -47,6 +45,7 @@ function initEditPage(){
   editbtn.addEventListener('click', () => {
     loadPage("edit")
   })
+
 
   document.addEventListener("click", (e) => {
   if (e.target.classList.contains("profile-tab")) {

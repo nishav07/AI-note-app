@@ -116,6 +116,15 @@ async function SPA(req,res){
     req.session.user = userr[0];
     const [likes] = await pool.query("SELECT * FROM notes_likes WHERE user_id = ?",[user.user_id]);
     const Updateduser = req.session.user
+
+     if(Updateduser.dob) {
+        const date = new Date(Updateduser.dob);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        Updateduser.dobFormatted = `${year}-${month}-${day}`;
+    }
+
     const [drafts] = await pool.query("SELECT * FROM draft_notes as a JOIN users as b ON a.userid = b.user_id WHERE b.user_id = ?",[user.user_id]);
     const userLikes = likes.map((like) => {
         return like.notesID;

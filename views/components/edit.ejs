@@ -54,8 +54,8 @@
 
       <div>
         <label>Bio</label>
-        <textarea placeholder="Write bio..." name="bio"  value="<%= user.bio %>"
-        class="w-full border p-3 rounded-lg outline-none h-24 input"></textarea>
+        <textarea placeholder="Write bio..." name="bio" 
+        class="w-full border p-3 rounded-lg outline-none h-24 input"><%= user.bio %></textarea>
       </div>
 
       <div>
@@ -66,7 +66,7 @@
 
       <div>
         <label>Date of Birth</label>
-        <input type="date" name="dob" value="<%= user.dob %>"
+        <input type="date" name="dob" value="<%= new Date(user.dob).toISOString().split('T')[0] %>"
         class="w-full border p-3 rounded-lg outline-none input" />
       </div>
 

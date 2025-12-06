@@ -248,7 +248,7 @@ async function edit(req,res) {
         const {name,bio,location,dob,gender} = req.body.userInfo;
 
         console.log('data from bckend:',{name,bio,location,dob,gender})
-        res.redirect("/dashboard")
+        res.sendStatus(200);
     }
 }
 

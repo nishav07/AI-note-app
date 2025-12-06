@@ -34,6 +34,7 @@ function initPage(page) {
   } else if (page === "write") {
     initNotesPage();
   } else if (page === "profile") {
+    loadProfilePage("post");
     initEditPage();
   } else if (page === ""){
     initFeedPage();
@@ -79,6 +80,9 @@ function initEditDataSender(){
   let userInfo = {};
   btn1.addEventListener('click', async() => {
      document.querySelectorAll(".input").forEach(i => {
+      if(i.value === ""){
+        return alert('form badho pehle');
+      }
       let name = i.name;
       let value = i.value;
       userInfo[name] = value;
@@ -193,11 +197,11 @@ const res = await fetch(`/Dashboard/${page}`,{
 
 //----------------------------------------------------------------------------------------------------------------
 
-document.addEventListener("click", (e) => {
-  if(e.target.matches("a[data-page]")){
-    loadProfilePage("post");
-  }
-})
+// document.addEventListener("click", (e) => {
+//   if(e.target.matches("a[data-page]")){
+//     loadProfilePage("post");
+//   }
+// })
 
 function loadProfilePage(page) {
   fetch(`/profile/${page}`)

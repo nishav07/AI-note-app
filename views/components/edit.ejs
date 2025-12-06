@@ -48,34 +48,37 @@
 
       <div>
         <label>Name</label>
-        <input type="text" name="name" placeholder="Your name" 
+        <input type="text" name="name" value="<%= user.name %>" placeholder="Your name" 
         class="w-full border p-3 rounded-lg outline-none input" />
       </div>
 
       <div>
         <label>Bio</label>
-        <textarea placeholder="Write bio..." name="bio" 
+        <textarea placeholder="Write bio..." name="bio"  value="<%= user.bio %>"
         class="w-full border p-3 rounded-lg outline-none h-24 input"></textarea>
       </div>
 
       <div>
         <label>Location</label>
-        <input type="text" placeholder="Your location" name="location"
+        <input type="text" placeholder="Your location" name="location" value="<%= user.location %>"
         class="w-full border p-3 rounded-lg outline-none input" />
       </div>
 
       <div>
         <label>Date of Birth</label>
-        <input type="date" name="dob"
+        <input type="date" name="dob" value="<%= user.dob %>"
         class="w-full border p-3 rounded-lg outline-none input" />
       </div>
 
       <div>
         <label>Gender</label>
         <select class="w-full border p-3 rounded-lg outline-none input" name="gender">
-          <option>Male</option>
-          <option>Female</option>
-          <option>Other</option>
+          <% if (user.gender === null) { %>
+            <option selected>Male</option>
+          <% } %>
+        <option <%= user.gender === "Male" ? "selected" : "" %>>Male</option>
+        <option <%= user.gender === "Female" ? "selected" : "" %>>Female</option>
+        <option <%= user.gender === "Other" ? "selected" : "" %>>Other</option>
         </select>
       </div>
 

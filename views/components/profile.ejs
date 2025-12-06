@@ -14,19 +14,19 @@
       
  
       <div class="mt-4">
-        <h1 class="text-2xl font-bold">Nishav</h1>
+        <h1 class="text-2xl font-bold"><%= user.name %></h1>
         <p class="text-gray-600"><%= user.username %></p>
-        <p class="mt-2 text-gray-700">Writer/coder. Coffee lover. Travel enthusiast.</p>
+        <p class="mt-2 text-gray-700"><%= user.bio %></p>
         
         <div class="flex items-center gap-4 text-gray-500 text-sm mt-2">
-          <span>📍 San Francisco, BIHAR</span>
+          <span>📍 <%= user.location %></span>
           <a href="#" class="text-blue-600 hover:underline">nishavhu.com</a>
         </div>
 
 
         <div class="flex gap-6 mt-3 text-gray-700">
-          <span><strong>240</strong> Followers</span>
-          <span><strong>180</strong> Following</span>
+          <span><strong><%= user.followers %></strong> Followers</span>
+          <span><strong><%= user.followers %></strong> Following</span>
         </div>
       </div>
     </div>

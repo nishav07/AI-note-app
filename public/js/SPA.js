@@ -346,7 +346,7 @@ function cmtBtn() {
 
 
 function postMenuBtn(){
-   document.addEventListener("click", (e) => {
+   document.addEventListener("click", async(e) => {
 
   const menuBtn = e.target.closest("i[vertical-option-bar]");
   if (menuBtn) {
@@ -370,6 +370,7 @@ function postMenuBtn(){
 
   if (e.target.closest("[data-edit]")) {
     console.log("User edittttt krna chaaaahhh rha hai");
+    window.location.href = "/Dashboard"
   }
 
   if (e.target.closest("[data-delete]")) {
@@ -378,13 +379,16 @@ function postMenuBtn(){
     const userID = btn.dataset.userid;
     console.log("postid userid:",postID,userID)
 
-    axios.delete("/delete",{
-     postID,
-     userID
-      
-    })
-    console.log("delete btn clicked");
-    window.location.href = "/Dashboard"
+    const res = await axios.delete("/delete",{
+              data:{postID,userID}
+            })
+
+    if(res.status === 200){
+      window.location.href = "/Dashboard"
+    }
+
+    // console.log("delete btn clicked");
+    
   }
 
 });

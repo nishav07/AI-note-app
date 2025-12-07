@@ -286,15 +286,22 @@ async function edit(req,res) {
 
 async function deletePosts(req,res){
     const {postID,userID} = req.body;
+    const {user_id} = req.session.user;
     console.log("usser deatils from backend:",{
         postID,
         userID
     })
 
-    // await pool.query(
-    //             "DELETE FROM notes WHERE notesID = ?",[postID]
-    //         )
-   res.sendStatus(200);
+    try {
+        await pool.query(
+                "DELETE FROM notes WHERE notesID = ? AND user_id = ?",[postID,user_id],
+            )
+             res.sendStatus(200)
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(500);
+    }
+   
 }
 
 

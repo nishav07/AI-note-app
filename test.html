@@ -10,17 +10,25 @@
 <body>
 
    <main class="flex p-20">
-
     <div id="mainFeed" class="h-140 w-4/5 shadow-sm">
             <div id="feed" class="h-full w-full flex flex-col gap-8 overflow-y-hidden overflow-y-scroll hide">
-
-                <div id="posts" class="w-full h-auto p-4 flex flex-col justify-start items-start gap-4 shadow-xl">
+                <div id="posts" class="w-full h-auto p-4 flex flex-col justify-start items-start gap-4 shadow-xl relative">
+                    
                     <div class="h-12 w-full flex justify-between items-center">
                         <div id="user-details" class="flex gap-4 items-center">
                         <div id="logo" class="h-10 w-10 rounded-full bg-black"></div>
                         <h1 class=" font-mono font-black text-xl">Nishav</h1>
+                        
                         </div>
-                        <a href="#" class="font-black text-2xl"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                        <div class="absolute top-16 right-4 hidden flex-col bg-white shadow-lg rounded-md p-2 gap-2" data-menu-box>
+
+                            <button class="text-left hover:bg-gray-100 px-3 py-1 rounded" data-edit>Edit</button>
+
+                            <button class="text-left text-red-500 hover:bg-red-100 px-3 py-1 rounded" data-delete>Delete</button>
+
+                        </div>
+
+                        <i class="fa-solid fa-ellipsis-vertical font-black text-2xl"vertical-option-bar></i>
                     </div>
                     <h1 class="font-mono font-black text-2xl"></h1>
                     <p class="font-normal text-xl text-gray-600"></p>
@@ -71,11 +79,17 @@
 
 <script>
 
-    const cbtn = document.querySelector("#cbtn");
-    const cdisplay = document.querySelector("#cdisplay");
-
-    cbtn.addEventListener("click" , () => {
-        cdisplay.classList.toggle("hidden")
+    document.addEventListener("click", (e) => {
+        if(e.target.closest("i[vertical-option-bar]")){
+            console.log("btn clicked");
+            const container = e.target.closest("#posts");
+            const menubtn =container.querySelector("[data-menu-box]");
+            menubtn.classList.toggle("hidden");
+            const editBtn = container.querySelector("[data-edit]")
+            const delBtn = container.querySelector("[data-delete]")
+            editBtn.addEventListener('click', () => console.log("edit btn cliked"))
+            delBtn.addEventListener('click', () => console.log("delete btn cliked"))
+        }
     })
 
 </script>

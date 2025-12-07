@@ -125,22 +125,30 @@ async function SPA(req,res){
         Updateduser.dobFormatted = `${year}-${month}-${day}`;
     }
 
+
     const [drafts] = await pool.query("SELECT * FROM draft_notes as a JOIN users as b ON a.userid = b.user_id WHERE b.user_id = ?",[user.user_id]);
     const userLikes = likes.map((like) => {
         return like.notesID;
     })
 
     console.log("drafts:",drafts)
-    console.log("userrrrrr",userr[0].name)
+    console.log("userrrrrr",Updateduser)
+
     const postWithLike = rows.map(post => ({
         ...post,
         liked: userLikes.includes(post.notesID)
     }));
 
+    // let myPosts = [];
+    // myPosts = postWithLike.filter(post => post.user_id == Updateduser.user_id)
+
+    console.log(myPosts);
+    console.log("final data:",postWithLike);
     res.render(`components/${page}`,{ 
         data:postWithLike,
         user:Updateduser,
-        draft:drafts
+        draft:drafts,
+        // myPosts:myPosts
     })
 }
 

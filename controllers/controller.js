@@ -283,6 +283,21 @@ async function edit(req,res) {
     }
 }
 
+
+async function deletePosts(req,res){
+    const {postID,userID} = req.body;
+    console.log("usser deatils from backend:",{
+        postID,
+        userID
+    })
+
+    // await pool.query(
+    //             "DELETE FROM notes WHERE notesID = ?",[postID]
+    //         )
+   res.sendStatus(200);
+}
+
+
 module.exports = {
     send,
     notesData,
@@ -298,5 +313,6 @@ module.exports = {
     commentSPA,
     likes,
     comments,
-    draft
+    draft,
+    deletePosts
 }

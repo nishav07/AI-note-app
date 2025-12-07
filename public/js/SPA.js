@@ -1,3 +1,5 @@
+// const axios = require('axios');
+
 document.querySelectorAll("a[data-page]").forEach(link => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
@@ -371,11 +373,20 @@ function postMenuBtn(){
   }
 
   if (e.target.closest("[data-delete]")) {
+    const btn = e.target.closest("[data-delete]");
+    const postID = btn.dataset.postid;
+    const userID = btn.dataset.userid;
+    console.log("postid userid:",postID,userID)
+
+    axios.delete("/delete",{
+     postID,
+     userID
+      
+    })
     console.log("delete btn clicked");
+    window.location.href = "/Dashboard"
   }
 
 });
-
-
 
 }

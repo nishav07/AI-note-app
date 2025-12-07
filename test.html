@@ -79,18 +79,6 @@
 
 <script>
 
-    document.addEventListener("click", (e) => {
-        if(e.target.closest("i[vertical-option-bar]")){
-            console.log("btn clicked");
-            const container = e.target.closest("#posts");
-            const menubtn =container.querySelector("[data-menu-box]");
-            menubtn.classList.toggle("hidden");
-            const editBtn = container.querySelector("[data-edit]")
-            const delBtn = container.querySelector("[data-delete]")
-            editBtn.addEventListener('click', () => console.log("edit btn cliked"))
-            delBtn.addEventListener('click', () => console.log("delete btn cliked"))
-        }
-    })
 
 </script>
 </html>

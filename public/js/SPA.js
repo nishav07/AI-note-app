@@ -29,6 +29,7 @@ function initPage(page) {
     // initCommnetSec();
     likebtn();
     cmtBtn();
+    postMenuBtn();
   } else if (page === "write") {
     initNotesPage();
   } else if (page === "profile") {
@@ -341,3 +342,40 @@ function cmtBtn() {
   })
 }
 
+
+function postMenuBtn(){
+   document.addEventListener("click", (e) => {
+
+  const menuBtn = e.target.closest("i[vertical-option-bar]");
+  if (menuBtn) {
+  const container = menuBtn.closest("#posts");
+  const currentMenu = container.querySelector("[data-menu-box]");
+
+  if (!currentMenu.classList.contains("hidden")) {
+      currentMenu.classList.add("hidden");
+    return;
+  }
+
+  const allMenus = document.querySelectorAll("[data-menu-box]");
+  allMenus.forEach(menu => menu.classList.add("hidden"));
+
+
+  currentMenu.classList.remove("hidden");
+
+  return;
+  }
+
+
+  if (e.target.closest("[data-edit]")) {
+    console.log("User edittttt krna chaaaahhh rha hai");
+  }
+
+  if (e.target.closest("[data-delete]")) {
+    console.log("delete btn clicked");
+  }
+
+});
+
+
+
+}

@@ -115,7 +115,9 @@ async function SPA(req,res){
     const [userr] = await pool.query("SELECT * FROM users WHERE user_id = ?",[user.user_id]);
     req.session.user = userr[0];
     const [likes] = await pool.query("SELECT * FROM notes_likes WHERE user_id = ?",[user.user_id]);
+   
     const Updateduser = req.session.user
+    // console.log('ownpost',Ownpost);
 
      if(Updateduser.dob) {
         const date = new Date(Updateduser.dob);
@@ -139,16 +141,13 @@ async function SPA(req,res){
         liked: userLikes.includes(post.notesID)
     }));
 
-    // let myPosts = [];
-    // myPosts = postWithLike.filter(post => post.user_id == Updateduser.user_id)
-
-    console.log(myPosts);
+    
     console.log("final data:",postWithLike);
     res.render(`components/${page}`,{ 
         data:postWithLike,
         user:Updateduser,
         draft:drafts,
-        // myPosts:myPosts
+        // p:Ownpost
     })
 }
 
@@ -156,9 +155,11 @@ async function profileSPA(req,res){
     const page = req.params.page;
     const [rows] = await pool.query("SELECT title,content,notesID FROM notes");
     const user = req.session.user;
+    const [Ownpost] = await pool.query("SELECT * FROM notes WHERE user_id = ?",[user.user_id]);
     res.render(`components2/${page}`,{ 
         data:rows,
-        user:user 
+        user:user,
+        p:Ownpost
     });
 }
 

@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Like page</title>
-     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
-
-   <main class="flex p-20">
-   <div class="min-h-screen w-full flex justify-center items-start px-4 py-6">
+<div class="min-h-screen w-full flex justify-center items-start px-4 py-6">
   <main class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-4 gap-6">
 
-    <!-- LEFT: EDIT POST -->
     <div 
       class="lg:col-span-3 w-full bg-white flex justify-center items-start shadow-2xl rounded-xl"
     >
@@ -24,7 +11,6 @@
             Edit Post
           </h1>
 
-          <!-- TITLE -->
           <input
             class="h-14 w-full border-gray-300 border-2 p-4 rounded-lg outline-none focus:border-blue-400"
             type="text"
@@ -33,19 +19,17 @@
             required
           />
 
-          <!-- STORY -->
           <textarea
             class="min-h-[18rem] w-full border-gray-300 border-2 p-4 rounded-lg resize-none outline-none focus:border-blue-400"
             name="story"
             placeholder="Edit your story..."
             required
           ></textarea>
-
         </div>
       </form>
     </div>
 
-    <!-- RIGHT: ACTIONS -->
+   
     <div 
       class="w-full bg-white flex flex-col justify-between shadow-xl rounded-xl p-6"
     >
@@ -68,15 +52,5 @@
         </button>
       </div>
     </div>
-
   </main>
 </div>
-
-   </main>
-</body>
-
-<script>
-
-
-</script>
-</html>

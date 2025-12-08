@@ -43,6 +43,7 @@ function initPage(page) {
 }
 
 
+
 function initEditPage(){
   const editbtn = document.querySelector(".editbtn")
   editbtn.addEventListener('click', () => {
@@ -346,11 +347,12 @@ function cmtBtn() {
 
 
 function postMenuBtn(){
+ console.log("MENU ACTIVE");
    document.addEventListener("click", async(e) => {
 
   const menuBtn = e.target.closest("i[vertical-option-bar]");
   if (menuBtn) {
-  const container = menuBtn.closest("#posts");
+  const container = menuBtn.closest(".posts");
   const currentMenu = container.querySelector("[data-menu-box]");
 
   if (!currentMenu.classList.contains("hidden")) {
@@ -370,7 +372,14 @@ function postMenuBtn(){
 
   if (e.target.closest("[data-edit]")) {
     console.log("User edittttt krna chaaaahhh rha hai");
-    window.location.href = "/Dashboard"
+    loadPage("postEdit");
+
+    const updateBtn = document.getElementById("updatebtn");
+    updateBtn.addEventListener('click',() => {
+      console.log('update btn clikeddddddd')
+    })
+
+    // window.location.href = "/Dashboard"
   }
 
   if (e.target.closest("[data-delete]")) {

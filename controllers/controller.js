@@ -304,6 +304,17 @@ async function deletePosts(req,res){
    
 }
 
+async function editPost(req,res){
+    const {postID} = req.body;
+    const {user_id} = req.session.user;
+    console.log("post edit wala data:",{
+        postID,
+        user_id
+    })
+
+    res.sendStatus(200);
+}
+
 
 module.exports = {
     send,
@@ -321,5 +332,6 @@ module.exports = {
     likes,
     comments,
     draft,
-    deletePosts
+    deletePosts,
+    editPost
 }

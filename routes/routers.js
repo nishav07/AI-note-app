@@ -23,6 +23,7 @@ router.post("/comments",isLoggedIn,micro.comments);
 router.post("/drafts",isLoggedIn,micro.draft);
 router.patch("/edit/:page",isLoggedIn,micro.edit);
 router.delete("/delete",isLoggedIn,micro.deletePosts)
+router.patch("/editPost",isLoggedIn,micro.editPost)
 module.exports = router;
 
 

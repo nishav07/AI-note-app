@@ -1,5 +1,7 @@
 // const axios = require('axios');
 
+// const { default: axios } = require("axios");
+
 document.querySelectorAll("a[data-page]").forEach(link => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
@@ -413,14 +415,16 @@ function postMenuBtn(){
 
 }
 
-function updatePost(id){
-  document.addEventListener("click",(e) => {
+ function updatePost(id){
+  document.addEventListener("click",async(e) => {
     if(!e.target.closest("[data-update-btn]")) return
-    // const editBtn = e.target.closest("[data-edit]");
     const btn = e.target.closest("[data-update-btn]");
-    // const postID  = editBtn.dataset.postid;
-    // console.log(postID);
     console.log("btn cliked to update and post id haii ye",id);
-
+    const res = await axios.patch("/editpost",{
+      postID:id
+    })
+    if(res.status === 200){
+      window.location.href = "/Dashboard"
+    }
   })
 }

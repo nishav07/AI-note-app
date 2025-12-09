@@ -419,12 +419,27 @@ function postMenuBtn(){
   document.addEventListener("click",async(e) => {
     if(!e.target.closest("[data-update-btn]")) return
     const btn = e.target.closest("[data-update-btn]");
-    console.log("btn cliked to update and post id haii ye",id);
+    const title = document.querySelector("#editTitle").value;
+    const content = document.querySelector("#editContent").value;
+
+    // if (!title || !content) {
+    // return alert("pura bhar isko");
+    //     }
+
+
+    console.log("btn cliked to update and post id haii ye",{
+      id,
+      title,
+      content,
+    });
+
     const res = await axios.patch("/editpost",{
       postID:id
     })
     if(res.status === 200){
-      window.location.href = "/Dashboard"
+      setTimeout(() => {
+        window.location.href = "/Dashboard"
+      },5000);
     }
   })
 }

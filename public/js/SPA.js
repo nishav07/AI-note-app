@@ -413,6 +413,8 @@ function updatePost(){
     if(!e.target.closest("[data-update-btn]")) return
 
     const btn = e.target.closest("[data-update-btn]");
+    const postID  = btn.dataset.postid;
+    console.log(postID);
     console.log("btn cliked to update")
 
 

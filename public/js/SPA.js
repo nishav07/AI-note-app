@@ -373,11 +373,15 @@ function postMenuBtn(){
   if (e.target.closest("[data-edit]")) {
     console.log("User edittttt krna chaaaahhh rha hai");
     loadPage("postEdit");
+    updatePost();
 
-    const updateBtn = document.getElementById("updatebtn");
-    updateBtn.addEventListener('click',() => {
-      console.log('update btn clikeddddddd')
-    })
+    //    const updateBtn = document.querySelector("#updatebtn");
+    //     updateBtn.addEventListener('click',() => {
+    //   console.log('update btn clikeddddddd')
+    // })
+    
+
+   
 
     // window.location.href = "/Dashboard"
   }
@@ -402,4 +406,15 @@ function postMenuBtn(){
 
 });
 
+}
+
+function updatePost(){
+  document.addEventListener("click",(e) => {
+    if(!e.target.closest("[data-update-btn]")) return
+
+    const btn = e.target.closest("[data-update-btn]");
+    console.log("btn cliked to update")
+
+
+  })
 }

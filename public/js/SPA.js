@@ -372,8 +372,13 @@ function postMenuBtn(){
 
   if (e.target.closest("[data-edit]")) {
     console.log("User edittttt krna chaaaahhh rha hai");
+    const editBtn = e.target.closest("[data-edit]");
+    const postID  = editBtn.dataset.postid;
+    console.log(postID)
     loadPage("postEdit");
-    updatePost();
+    updatePost(postID);
+
+    
 
     //    const updateBtn = document.querySelector("#updatebtn");
     //     updateBtn.addEventListener('click',() => {
@@ -408,15 +413,14 @@ function postMenuBtn(){
 
 }
 
-function updatePost(){
+function updatePost(id){
   document.addEventListener("click",(e) => {
     if(!e.target.closest("[data-update-btn]")) return
-
+    // const editBtn = e.target.closest("[data-edit]");
     const btn = e.target.closest("[data-update-btn]");
-    const postID  = btn.dataset.postid;
-    console.log(postID);
-    console.log("btn cliked to update")
-
+    // const postID  = editBtn.dataset.postid;
+    // console.log(postID);
+    console.log("btn cliked to update and post id haii ye",id);
 
   })
 }

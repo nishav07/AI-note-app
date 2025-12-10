@@ -1,3 +1,7 @@
+// let likeListenerAttached = false;
+// let cmtListenerAttached = false;
+// let postMenuAttached = false;
+
 document.querySelectorAll("a[data-page]").forEach(link => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
@@ -22,12 +26,14 @@ function loadPage(page) {
     });
 }
 
+   
+
 
 function initPage(page) {
   if (page === "feed") {
     // initFeedPage();
     // initCommnetSec();
-    likebtn();
+     likebtn();
     cmtBtn();
     postMenuBtn();
   } else if (page === "write") {
@@ -220,7 +226,11 @@ document.addEventListener("click", (e) => {
 
 //------------------------ likes & commnet mechnaismssnwfjd,-----------------------------
 
+
+
 function likebtn() {
+// if (likeListenerAttached) return; 
+//   likeListenerAttached = true;
   document.addEventListener('click', async (e) => {
     const btn = e.target.closest("[data-like-btn]");
     if (!btn) return;
@@ -269,6 +279,8 @@ let curr_post_id = null;
 let curr_user_id = null;
 
 function cmtBtn() {
+  // if(cmtListenerAttached) return;
+  //  cmtListenerAttached = true;
   document.addEventListener("click", async(e) => {
 
     if (e.target.closest(".cmt-btn")) {
@@ -313,6 +325,8 @@ function cmtBtn() {
 
 
 function postMenuBtn(){
+  // if(postMenuAttached) return;
+  // postMenuAttached = true;
  console.log("MENU ACTIVE");
    document.addEventListener("click", async(e) => {
 

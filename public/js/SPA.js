@@ -40,7 +40,7 @@ function initPage(page) {
     loadProfilePage("post");
     initEditPage();
   } else if (page === "drafts") {
-    draftMneu()
+    draftMenu()
   } else if (page === ""){
     initFeedPage();
   }
@@ -451,21 +451,22 @@ function postMenuBtn(){
 }
 
 
-function draftMneu(){
+function draftMenu(){
   console.log("draft menu clciked");
   document.addEventListener("click",async(e) => {
-  const menuBtn = e.target.closest("i[vertical-option-bar]");
+  const menuBtn = e.target.closest("i[vertical-option-barrr]");
   if (menuBtn) {
     console.log("menu btn cliked")
-  const container = menuBtn.closest(".posts");
-  const currentMenu = container.querySelector("[data-menu-box]");
-
+  const container = menuBtn.closest(".postsss");
+  const currentMenu = container.querySelector("[data-menu-boxxx]");
+  console.log(container);
+  console.log(currentMenu);
   if (!currentMenu.classList.contains("hidden")) {
       currentMenu.classList.add("hidden");
-    return;
+  return;
   }
 
-  const allMenus = document.querySelectorAll("[data-menu-box]");
+  const allMenus = document.querySelectorAll("[data-menu-boxxx]");
   allMenus.forEach(menu => menu.classList.add("hidden"));
 
 
@@ -475,3 +476,4 @@ function draftMneu(){
   }
   })
 }
+

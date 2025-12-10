@@ -1,6 +1,4 @@
-// const axios = require('axios');
 
-// const { default: axios } = require("axios");
 
 document.querySelectorAll("a[data-page]").forEach(link => {
   link.addEventListener("click", (e) => {
@@ -320,19 +318,34 @@ function cmtBtn() {
 
       input.value = "";
 
-      const res = fetch("/comments",{
-      method: "POST",
-      headers: {"Content-Type":"application/json"},
-      body: JSON.stringify({
-        postID:curr_post_id,
-        userID:curr_user_id,
-        comment:value
-      })
+       const res = await axios.post("/comments",{
+              postID:curr_post_id,
+              userID:curr_user_id,
+              comment:value
+            })
 
-    })
+        
+         if(res.status === 200){
+      window.location.href = "/Dashboard"
+    }
+        
+        
 
-     const data = await res.json();
-    console.log("cmt_data", data);
+
+    //   const res = fetch("/comments",{
+    //   method: "POST",
+    //   headers: {"Content-Type":"application/json"},
+    //   body: JSON.stringify({
+    //     postID:curr_post_id,
+    //     userID:curr_user_id,
+    //     comment:value
+    //   })
+
+    // })
+
+    //  const data = await res.json();
+    // console.log("cmt_data", data);
+    // loadPage("feed")
 
     // const btn = e.target.closest("[data-cmt-btn]");
     // if(!btn) return;
@@ -473,6 +486,26 @@ function draftMenu(){
   currentMenu.classList.remove("hidden");
 
   return;
+  }
+
+
+   if (e.target.closest("[data-draft-delete]")) {
+    const btn = e.target.closest("[data-draft-delete]");
+    const postID = btn.dataset.postid;
+    const userID = btn.dataset.userid;
+    console.log("postid userid:",postID,userID)
+
+    const res = await axios.delete("/deleteDrafts",{
+              data:{postID,userID}
+            })
+
+    if(res.status === 200){
+      // window.location.href = "/Dashboard"
+      loadPage("drafts")
+    }
+
+    console.log("delete btn clicked");
+    
   }
   })
 }

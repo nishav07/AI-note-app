@@ -225,7 +225,8 @@ async function likes(req,res){
 
 
 async function comments(req,res){
-    const { postID, userID, comment } = req.body;
+    try {
+        const { postID, userID, comment } = req.body;
     console.log("backend pe data aa gya", {
         postID,
         userID,
@@ -237,9 +238,13 @@ async function comments(req,res){
     const [cmt] = await pool.query("SELECT cmt_count FROM notes WHERE notesID = ?",[postID]);
          const cmtCount = cmt[0].cmt_count;
 
-         return res.json({
-            data:cmtCount,
-         })
+         return res.sendStatus(200);
+    } catch (error) {
+        console.log(error);
+        return res.sendStatus(400);
+    }
+
+         
          
 }
 
@@ -328,6 +333,30 @@ try {
 }
 
 
+
+async function deleteDrafts (req,res){
+    try {
+
+        const {postID,userID} = req.body;
+        const {user_id} = req.session.user;
+        console.log("usser deatils from backend:",{
+        postID,
+        userID
+
+    })
+        await pool.query(
+             "DELETE FROM draft_notes WHERE draft_notesID = ? AND userid = ?",[postID,user_id],
+            )
+            res.sendStatus(200)
+
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(500);
+    }
+}
+
+
+
 module.exports = {
     send,
     notesData,
@@ -345,5 +374,6 @@ module.exports = {
     comments,
     draft,
     deletePosts,
-    editPost
+    editPost,
+    deleteDrafts
 }

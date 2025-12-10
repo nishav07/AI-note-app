@@ -434,12 +434,16 @@ function postMenuBtn(){
     });
 
     const res = await axios.patch("/editpost",{
-      postID:id
+      postID:id,
+      title:title,
+      content:content
     })
     if(res.status === 200){
-      setTimeout(() => {
-        window.location.href = "/Dashboard"
-      },5000);
+      window.location.href = "/Dashboard"
+    }
+
+    if(res.status === 404){
+      alert("404 post not found")
     }
   })
 }

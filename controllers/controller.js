@@ -305,14 +305,26 @@ async function deletePosts(req,res){
 }
 
 async function editPost(req,res){
-    const {postID} = req.body;
+    
+
+try {
+    const {postID,title,content} = req.body;
     const {user_id} = req.session.user;
     console.log("post edit wala data:",{
         postID,
-        user_id
+        user_id,
+        title,
+        content
     })
 
+    await pool.query("UPDATE notes SET title = ?,content = ? WHERE notesID = ? AND user_id = ?",[title,content,postID,user_id]);
     res.sendStatus(200);
+} catch (error) {
+    console.log("post update time ye err aaya",error)
+    return res.sendStatus(404);
+}
+
+   
 }
 
 
@@ -320,7 +332,7 @@ module.exports = {
     send,
     notesData,
     home,
-    notesData,
+    // notesData,
     login,
     post_login,
     signup,

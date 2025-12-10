@@ -39,6 +39,8 @@ function initPage(page) {
   } else if (page === "profile") {
     loadProfilePage("post");
     initEditPage();
+  } else if (page === "drafts") {
+    draftMneu()
   } else if (page === ""){
     initFeedPage();
   }
@@ -445,5 +447,31 @@ function postMenuBtn(){
     if(res.status === 404){
       alert("404 post not found")
     }
+  })
+}
+
+
+function draftMneu(){
+  console.log("draft menu clciked");
+  document.addEventListener("click",async(e) => {
+  const menuBtn = e.target.closest("i[vertical-option-bar]");
+  if (menuBtn) {
+    console.log("menu btn cliked")
+  const container = menuBtn.closest(".posts");
+  const currentMenu = container.querySelector("[data-menu-box]");
+
+  if (!currentMenu.classList.contains("hidden")) {
+      currentMenu.classList.add("hidden");
+    return;
+  }
+
+  const allMenus = document.querySelectorAll("[data-menu-box]");
+  allMenus.forEach(menu => menu.classList.add("hidden"));
+
+
+  currentMenu.classList.remove("hidden");
+
+  return;
+  }
   })
 }

@@ -1,5 +1,3 @@
-
-
 document.querySelectorAll("a[data-page]").forEach(link => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
@@ -110,10 +108,6 @@ function initEditDataSender(){
 
 
 
-
-
-
-
 function initNotesPage() {
   const publishBtn = document.getElementById("publishbtn");
   const draftBtn = document.getElementById("draftbtn");
@@ -194,22 +188,10 @@ const res = await fetch(`/Dashboard/${page}`,{
 })
 
 
-// function loadComments(page) {
-//   fetch(`/Dashboard/${page}`)
-//     .then(res => res.text())
-//     .then(html => {
-//       document.getElementById("cdisplay").innerHTML = html;
-//     });
-    
-// }
 
 //----------------------------------------------------------------------------------------------------------------
 
-// document.addEventListener("click", (e) => {
-//   if(e.target.matches("a[data-page]")){
-//     loadProfilePage("post");
-//   }
-// })
+
 
 function loadProfilePage(page) {
   fetch(`/profile/${page}`)
@@ -299,11 +281,6 @@ function cmtBtn() {
 
     }
 
-    // const btn = e.target.closest("[data-cmt-btn]");
-    // // const icon = btn.querySelector("[data-like-icon]");
-    // const countSpan = btn.querySelector("[data-cmt-count]");
-
-
 
     if (e.target.closest("[data-send-btn]")) {
       const sendBtn = e.target.closest("[data-send-btn]");
@@ -329,34 +306,6 @@ function cmtBtn() {
       window.location.href = "/Dashboard"
     }
         
-        
-
-
-    //   const res = fetch("/comments",{
-    //   method: "POST",
-    //   headers: {"Content-Type":"application/json"},
-    //   body: JSON.stringify({
-    //     postID:curr_post_id,
-    //     userID:curr_user_id,
-    //     comment:value
-    //   })
-
-    // })
-
-    //  const data = await res.json();
-    // console.log("cmt_data", data);
-    // loadPage("feed")
-
-    // const btn = e.target.closest("[data-cmt-btn]");
-    // if(!btn) return;
-
-    // const countSpan = btn.querySelector("[data-cmt-count]");
-
-    // console.log("data of comment count",data.data)
-
-    // if (countSpan) {
-    //   countSpan.innerText = "";
-    // }
     }
 
   })
@@ -394,18 +343,6 @@ function postMenuBtn(){
     console.log(postID)
     loadPage("postEdit");
     updatePost(postID);
-
-    
-
-    //    const updateBtn = document.querySelector("#updatebtn");
-    //     updateBtn.addEventListener('click',() => {
-    //   console.log('update btn clikeddddddd')
-    // })
-    
-
-   
-
-    // window.location.href = "/Dashboard"
   }
 
   if (e.target.closest("[data-delete]")) {
@@ -422,7 +359,6 @@ function postMenuBtn(){
       window.location.href = "/Dashboard"
     }
 
-    // console.log("delete btn clicked");
     
   }
 
@@ -436,11 +372,6 @@ function postMenuBtn(){
     const btn = e.target.closest("[data-update-btn]");
     const title = document.querySelector("#editTitle").value;
     const content = document.querySelector("#editContent").value;
-
-    // if (!title || !content) {
-    // return alert("pura bhar isko");
-    //     }
-
 
     console.log("btn cliked to update and post id haii ye",{
       id,
@@ -500,7 +431,6 @@ function draftMenu(){
             })
 
     if(res.status === 200){
-      // window.location.href = "/Dashboard"
       loadPage("drafts")
     }
 

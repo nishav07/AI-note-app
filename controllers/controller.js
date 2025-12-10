@@ -31,10 +31,6 @@ async function notesData(req,res){
 }
 
 
-// function newNotes(req,res){
-//     res.render("newNotes.ejs");
-// }
-
 function login (req,res){
 
     res.render("login.ejs")
@@ -58,7 +54,6 @@ async function post_signup (req,res){
     } catch(err){
         console.log(err);
         req.flash("error","Signup Failed Due to Internal Error");
-        // res.status(500).send("database error");
         res.redirect("/");
     }
 }
@@ -93,20 +88,11 @@ async function post_login (req,res){
      }
     } catch (error) {
         console.log(error)
-        // res.status(500).send("invalid details");
         req.flash("error" , "User not Found")
         res.redirect("/login")
     }
 
 }
-
-// function profile(req,res){
-//     res.render("profile.ejs")
-// }
-
-// function explore(req,res){
-//     res.render("explore.ejs")
-// }
 
 async function SPA(req,res){
     const page = req.params.page;
@@ -117,7 +103,6 @@ async function SPA(req,res){
     const [likes] = await pool.query("SELECT * FROM notes_likes WHERE user_id = ?",[user.user_id]);
    
     const Updateduser = req.session.user
-    // console.log('ownpost',Ownpost);
 
      if(Updateduser.dob) {
         const date = new Date(Updateduser.dob);
@@ -147,7 +132,6 @@ async function SPA(req,res){
         data:postWithLike,
         user:Updateduser,
         draft:drafts,
-        // p:Ownpost
     })
 }
 
@@ -165,9 +149,7 @@ async function profileSPA(req,res){
 
 
 
-// async function edit(req,res) {
-//     res.render("edit.ejs")
-// }
+
 
 async function commentSPA(req,res){
     const { postID, userID,page} = req.body;
@@ -220,7 +202,7 @@ async function likes(req,res){
          })
     }
 
-    // res.redirect("/Dashboard")
+    
 }
 
 
@@ -274,7 +256,7 @@ async function edit(req,res) {
     if(page === "personal"){
         try{
             const {name,bio,location,dob,gender} = req.body.userInfo;
-            // await pool.query("INSERT INTO users (name,bio,location,dob,gender) VALUES(?,?,?,?,?)",[name,bio,location,dob,gender]);
+           
             await pool.query(
                 "UPDATE users SET name = ?,bio = ?,location = ?,dob = ?,gender = ? WHERE user_id = ?",[name,bio,location,dob,gender,userID]
             )
@@ -361,7 +343,6 @@ module.exports = {
     send,
     notesData,
     home,
-    // notesData,
     login,
     post_login,
     signup,
